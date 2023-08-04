@@ -1,5 +1,4 @@
-﻿
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <Windows.h>
 
@@ -16,19 +15,19 @@ public:
         this->command = command;
     }
 
-int work()
+    int work()
     {
         setlocale(LC_ALL, "Russian");
         SetConsoleOutputCP(1251);
-        SetConsoleCP(1251);       
+        SetConsoleCP(1251);
         if (command == "+")
         {
-            a++;            
+            a++;
         }
         else if (command == "-")
         {
-            a--;            
-        }    
+            a--;
+        }
         else if (command == "=")
         {
             return a;
@@ -59,7 +58,7 @@ int main()
     {
         a_ = 1;
     }
-    
+
     Counter counter();
     do
     {
@@ -75,15 +74,15 @@ int main()
         {
             std::cout << counter.work() << std::endl;
             continue;
-        }            
+        }
         else if (command_ == "x")
         {
             std::cout << "До свидания" << std::endl;
             break;
         }
-                                     
+
     } while (true);
-    
+
 }
 
 

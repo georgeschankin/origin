@@ -94,10 +94,6 @@ int main()
             std::cout << "set_num1 = " << calc.set_num1(num1_) << std::endl;
             std::cout << "set_num2 = " << calc.set_num2(num2_) << std::endl;
         }
-        
+
     } while (true);
-    
-
 }
-
-

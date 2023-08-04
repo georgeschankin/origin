@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e344de67-c1e2-4d9c-8c84-21a5c4e315d1}</ProjectGuid>
-    <RootNamespace>calc</RootNamespace>
+    <ProjectGuid>{d95a14e4-6d75-484f-8ebd-c39d62906cf2}</ProjectGuid>
+    <RootNamespace>Lesson3Zadacha2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="calc.cpp" />
+    <ClCompile Include="Lesson3_Zadacha2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
