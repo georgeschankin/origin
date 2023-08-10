@@ -36,7 +36,7 @@ int main()
     f_out.open("out.txt");*/
 
     std::ifstream f_in("in.txt");
-    std::ofstream f_out("out.txt", std::ios::app);
+    std::ofstream f_out("out.txt", std::ios::out);
 
     int N, number_house, number_apartment;
     std::string city;
@@ -44,33 +44,22 @@ int main()
 
     f_in >> N;
 
+    f_out << N;
+    f_out << std::endl;
+
     while (!f_in.eof())
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            if (j == 0)
-            {
-                f_in >> city;
-            }
-            else if (j == 1)
-            {
-                f_in >> street;
-            }
-            else if (j == 2)
-            {
-                f_in >> number_house;
-            }
-            else if (j == 3)
-            {
-                f_in >> number_apartment;
-            }           
-        }
+    {        
+        f_in >> city;
+        f_in >> street;
+        f_in >> number_house;
+        f_in >> number_apartment;
+
         Address addr(number_house, number_apartment, city, street);
-        f_out << N;
-        f_out << std::endl;
+        
         f_out << addr.get_output_address();
         f_out << std::endl;
     }
+
     f_in.close();
     f_out.close();           
 }

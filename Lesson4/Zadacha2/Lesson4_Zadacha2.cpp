@@ -5,13 +5,13 @@
 class Address
 {
 private:
-    int N, number_house, number_apartment;
+    int number_house, number_apartment;
     std::string city;
     std::string street;
-    std::string temp;
+    //std::string temp;
 
 public:
-    std::string  get_output_address(Address* addresses, int N)
+    static std::string get_output_address(Address* addresses, int N)
     {
         setlocale(LC_ALL, "Russian");
         sort(addresses, N);
@@ -21,9 +21,9 @@ public:
         }       
     }
 
-    void sort(Address* addresses, int size) //сортировка
+   static void sort(Address* addresses, int size) //сортировка
     {
-        //std::string *temp;
+        std::string temp;
         
         for (int i = 0; i < size - 1; i++) 
         {
@@ -31,9 +31,9 @@ public:
             {
                 if (addresses[j].city > addresses[j + 1].city)
                 {                    
-                    temp = addresses[j].city;
-                    addresses[j].city = addresses[j + 1].city;
-                    addresses[j + 1].city = temp;
+                    temp = addresses[j];
+                    addresses[j] = addresses[j + 1];
+                    addresses[j + 1] = temp;
                 }
             }
         }                      
@@ -45,11 +45,9 @@ public:
         this->street = street;
         this->number_apartment = number_apartment;
         this->number_house = number_house;
-    }
-
-    //Address() {}
-    
+    }       
 };
+
 
 int main()
 {
@@ -61,7 +59,7 @@ int main()
     f_out.open("out.txt");*/
 
     std::ifstream f_in("in.txt");
-    std::ofstream f_out("out.txt", std::ios::app);
+    std::ofstream f_out("out.txt", std::ios::ou);
 
     int N, number_house, number_apartment, i = 0;
     std::string city;
@@ -69,42 +67,26 @@ int main()
 
     f_in >> N;
 
+    f_out << N;
+    f_out << std::endl;
+
     Address** adr = new Address*[N];
    
     //читаю данные из файла
     while (!f_in.eof())
     {
-        for (int j = 0; j < 4; j++)
-        {
-            if (j == 0)
-            {
-                f_in >> city;
-            }
-            else if (j == 1)
-            {
-                f_in >> street;
-            }
-            else if (j == 2)
-            {
-                f_in >> number_house;
-            }
-            else if (j == 3)
-            {
-                f_in >> number_apartment;
-            }
-        }
+        f_in >> city;
+        f_in >> street;
+        f_in >> number_house;
+        f_in >> number_apartment;
+
         adr[i] = new Address(number_house, number_apartment, city, street);
-        
-        /*f_out << adr[i].get_output_address();
-        f_out << std::endl;*/        
+                        
         i++;
-        //W = i; //эту переменную применю для удаления массива
+        
     }
-    Address s();
-    //s.sort(adr, N);
-    f_out << N;
-    f_out << std::endl;
-    f_out << s().get_output_address(*adr, N);
+    Address s;        
+    f_out << s.get_output_address(*adr, N);
     
     for (int j = 0; j < N; j++)
     {
