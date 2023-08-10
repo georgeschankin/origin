@@ -3,37 +3,51 @@
 
 class Calculator
 {
-public:
+private:
     double _num1, _num2;
-
+    
+public:    
+    
     double add(double num1, double num2)
     {
-        return num1 + num2;
+        this->_num1 = num1;
+        this->_num2 = num2;
+        return _num1 + _num2;
     }
 
     double multiply(double num1, double num2)
     {
-        return num1 * num2;
+        this->_num1 = num1;
+        this->_num2 = num2;
+        return _num1 * _num2;
     }
 
     double subtract_1_2(double num1, double num2)
     {
-        return num1 - num2;
+        this->_num1 = num1;
+        this->_num2 = num2;
+        return _num1 - _num2;
     }
 
     double subtract_2_1(double num1, double num2)
     {
-        return num2 - num1;
+        this->_num1 = num1;
+        this->_num2 = num2;
+        return _num2 - _num1;
     }
 
     double divide_2_1(double num1, double num2)
     {
-        return num2 / num1;
+        this->_num1 = num1;
+        this->_num2 = num2;
+        return _num2 / _num1;
     }
 
     double divide_1_2(double num1, double num2)
     {
-        return num1 / num2;
+        this->_num1 = num1;
+        this->_num2 = num2;
+        return _num1 / _num2;
     }
 
     bool set_num1(double num1)
@@ -77,11 +91,9 @@ int main()
 
         Calculator calc;
 
-        if ((num1_ == 0) || (num2_ == 0))
+        if ((calc.set_num1(num1_) == false) || (calc.set_num2(num2_) == false))
         {
-            std::cout << "неверный ввод!" << std::endl;
-            std::cout << "set_num1 = " << calc.set_num1(num1_) << std::endl;
-            std::cout << "set_num2 = " << calc.set_num2(num2_) << std::endl;
+            std::cout << "неверный ввод!" << std::endl;           
         }
         else
         {
