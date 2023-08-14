@@ -6,32 +6,28 @@ class Counter
 {
 private:
     int a;
-    std::string command;
-
+   
 public:
-    Counter(int a, std::string command)
+    Counter(int a_)
     {
-        this->a = a;
-        this->command = command;
+        this->a = a_;        
     }
 
-    int work()
+    int plus()
+    {      
+        this->a = a++;
+        return a;
+    }
+
+    int minus()
     {
-        setlocale(LC_ALL, "Russian");
-        SetConsoleOutputCP(1251);
-        SetConsoleCP(1251);
-        if (command == "+")
-        {
-            a++;
-        }
-        else if (command == "-")
-        {
-            a--;
-        }
-        else if (command == "=")
-        {
-            return a;
-        }
+        this->a = a--;
+        return a;
+    }
+
+    int ravno()
+    {
+        return a;
     }
 };
 
@@ -59,30 +55,37 @@ int main()
         a_ = 1;
     }
 
-    Counter counter(); //если убрать () или поставить {} вознкает ошибка
+    //Counter counter(a_); //если убрать () или поставить {} вознкает ошибка
     do
     {
         std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
         std::cin >> command_;
-        Counter counter(a_, command_);
-        if ((command_ == "+") || (command_ == "-"))
+        Counter counter(a_);
+
+        if (command_ == "+")
         {
-            a_ = counter.work();
-            continue;
+            a_ = counter.plus();
+            continue;           
+        }
+        else if (command_ == "-")
+        {
+            a_ = counter.minus();
+            continue;            
         }
         else if (command_ == "=")
         {
-            std::cout << counter.work() << std::endl;
-            continue;
+            std::cout << counter.ravno() << std::endl;
+            continue;           
         }
         else if (command_ == "x")
         {
             std::cout << "До свидания" << std::endl;
             break;
-        }
+        } 
+        
 
-    } while (true);
-
+    } while (command_ != "x");
+    
 }
 
 
