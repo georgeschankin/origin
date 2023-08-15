@@ -1,7 +1,7 @@
 ﻿
 #include <iostream>
 
-#define SUB(A, B) (A - B)
+#define SUB(A, B) ((A) - (B))
 
 int main()
 {
