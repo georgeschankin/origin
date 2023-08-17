@@ -3,15 +3,15 @@
 
 class Calculator
 {
-private:
-    double _num1, _num2;
+/*private:
+    double _num1, _num2; */
     
 public:
+    double _num1, _num2;
 
-    Calculator(double num1, double num2)
-    {
-        this->_num1 = num1;
-        this->_num2 = num2;
+    Calculator()
+    {        
+        
     }
 
     
@@ -45,10 +45,11 @@ public:
         return _num1 / _num2;
     }
 
-    bool set_num1()
+    bool set_num1(double num1)
     {
         if (_num1 != 0)
-        {           
+        {  
+            this->_num1 = num1;
             return true;
         }
         else
@@ -57,10 +58,11 @@ public:
         }
     }
 
-    bool set_num2()
+    bool set_num2(double num2)
     {
         if (_num2 != 0)
-        {            
+        {     
+            this->_num2 = num2;
             return true;
         }
         else
@@ -75,6 +77,8 @@ int main()
     setlocale(LC_ALL, "Russian");
     double num1_, num2_;
 
+    Calculator calc; //когда объявляю класс за пределами цикла, то программа работает некорректно
+
     do
     {
         std::cout << "Введите num1 ";
@@ -82,9 +86,9 @@ int main()
         std::cout << "Введите num2 ";
         std::cin >> num2_;
 
-        Calculator calc(num1_, num2_);
+        //Calculator calc; //когда объявляю класс здесь, то программа работает корректно
 
-        if ((calc.set_num1() == false) || (calc.set_num2() == false))
+        if ((calc.set_num1(num1_) == false) || (calc.set_num2(num2_) == false))
         {
             std::cout << "неверный ввод!" << std::endl;           
         }
@@ -95,9 +99,7 @@ int main()
             std::cout << "num2 - num1 = " << calc.subtract_2_1() << std::endl;
             std::cout << "num1 * num2 = " << calc.multiply() << std::endl;
             std::cout << "num1 / num2 = " << calc.divide_1_2() << std::endl;
-            std::cout << "num2 / num1 = " << calc.divide_2_1() << std::endl;
-            std::cout << "set_num1 = " << calc.set_num1() << std::endl;
-            std::cout << "set_num2 = " << calc.set_num2() << std::endl;
+            std::cout << "num2 / num1 = " << calc.divide_2_1() << std::endl;           
         }
 
     } while (true);

@@ -13,16 +13,16 @@ public:
         this->a = a_;        
     }
 
-    int plus()
+    void plus()
     {      
-        this->a = a++;
-        return a;
+        this-> a++;
+        //return a;
     }
 
-    int minus()
+    void minus()
     {
-        this->a = a--;
-        return a;
+        this-> a--;
+        //return a;
     }
 
     int ravno()
@@ -38,7 +38,7 @@ int main()
     SetConsoleCP(1251);
     std::string yes_no;
     std::string command_;
-    int a_;
+    int a_, i = 0;
 
     std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
     std::cin >> yes_no;
@@ -55,21 +55,21 @@ int main()
         a_ = 1;
     }
 
-    //Counter counter(a_); //если убрать () или поставить {} вознкает ошибка
+    Counter counter(a_); //если убрать () или поставить {} вознкает ошибка
     do
     {
         std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
         std::cin >> command_;
-        Counter counter(a_);
+       // Counter counter(a_);
 
         if (command_ == "+")
         {
-            a_ = counter.plus();
+            /*a_ =*/ counter.plus();
             continue;           
         }
         else if (command_ == "-")
         {
-            a_ = counter.minus();
+            /*a_ =*/ counter.minus();
             continue;            
         }
         else if (command_ == "=")
@@ -82,8 +82,8 @@ int main()
             std::cout << "До свидания" << std::endl;
             break;
         } 
-        
-
+        i++;
+        std::cout << i << std::endl;
     } while (command_ != "x");
     
 }
