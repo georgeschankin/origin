@@ -1,31 +1,11 @@
 #pragma once
 
-int plus(int a, int b)
-{
-	return a + b;
-}
+int plus(int, int);
 
-int minus(int a, int b)
-{
-	return a - b;
-}
+int minus(int, int);
 
-int multiplication(int a, int b)
-{
-	return a * b;
-}
+int multiplication(int, int);
 
-int division(int a, int b)
-{
-	return a / b;
-}
+int division(int, int);
 
-int exp(int a, int b)
-{
-	int a1 = 1;
-	for (int i = 0; i < b; i++)
-	{
-		a1 = a1 * a;
-	}
-	return a1;
-}
+int exp(int, int);

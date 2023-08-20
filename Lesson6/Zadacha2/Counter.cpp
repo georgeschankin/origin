@@ -1,5 +1,6 @@
-#pragma once
-/*class Counter
+#include "Counter.h"
+
+class Counter
 {
 private:
     int a;
@@ -26,7 +27,4 @@ public:
     {
         return a;
     }
-};*/
-
-int a;
-Counter counter(a);
+};

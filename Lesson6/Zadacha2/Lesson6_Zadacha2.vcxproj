@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Counter.cpp" />
     <ClCompile Include="Lesson6_Zadacha2.cpp" />
   </ItemGroup>
   <ItemGroup>

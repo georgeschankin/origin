@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="functions.cpp" />
     <ClCompile Include="Lesson6_Zadacha1.cpp" />
   </ItemGroup>
   <ItemGroup>
