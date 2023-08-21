@@ -3,11 +3,11 @@
 
 class Calculator
 {
-/*private:
-    double _num1, _num2; */
+private:
+    double _num1, _num2;
     
 public:
-    double _num1, _num2;
+    //double _num1, _num2;
 
     Calculator()
     {        
@@ -47,7 +47,7 @@ public:
 
     bool set_num1(double num1)
     {
-        if (_num1 != 0)
+        if (num1 != 0)
         {  
             this->_num1 = num1;
             return true;
@@ -60,7 +60,7 @@ public:
 
     bool set_num2(double num2)
     {
-        if (_num2 != 0)
+        if (num2 != 0)
         {     
             this->_num2 = num2;
             return true;
