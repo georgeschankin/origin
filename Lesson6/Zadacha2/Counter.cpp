@@ -1,30 +1,23 @@
 #include "Counter.h"
 
-class Counter
-{
-private:
-    int a;
-
-public:
-    Counter(int a_)
+Counter::Counter(int a)
     {
-        this->a = a_;
+        this->a = a;
     }
 
-    void plus()
+    void Counter::plus()
     {
         this->a++;
         //return a;
     }
 
-    void minus()
+    void Counter::minus()
     {
         this->a--;
         //return a;
     }
 
-    int ravno()
+    int Counter::ravno()
     {
         return a;
     }
-};

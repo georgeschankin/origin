@@ -1,32 +1,16 @@
 #pragma once
-/*class Counter
+class Counter
 {
 private:
     int a;
 
 public:
-    Counter(int a_)
-    {
-        this->a = a_;
-    }
+    Counter(int a_);
+    
+    void plus();
+    
+    void minus();   
 
-    void plus()
-    {
-        this->a++;
-        //return a;
-    }
-
-    void minus()
-    {
-        this->a--;
-        //return a;
-    }
-
-    int ravno()
-    {
-        return a;
-    }
-};*/
-
-int a;
-Counter counter(a);
+    int ravno();
+    
+};

@@ -26,13 +26,17 @@ int main()
     {
         a_ = 1;
     }
+    else
+    {
+        a_ = 0;
+    }
 
-    //Counter counter(a_);
+    Counter counter(a_);
     do
     {
         std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
         std::cin >> command_;
-        // Counter counter(a_);
+        //Counter counter(a_);
 
         if (command_ == "+")
         {
