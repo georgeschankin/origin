@@ -6,25 +6,16 @@ class Figure
 private:
     int _side;
     std::string _name;
-    int sides_count(int _side)
+
+public:
+    int get_sides_count()
     {
        return _side;
     }
 
-    std::string names_count(std::string _name)
+    std::string get_name()
     {
-        return _name;
-    }
-
-public:
-    int get_sides_count(int side)
-    {
-       return sides_count(side);
-    }
-
-    std::string get_name(std::string name)
-    {
-       return names_count(name);
+       return _name;
     }
 
     Figure (int side, std::string name)
@@ -33,27 +24,25 @@ public:
         this->_name = name;
     }
 
-    Figure ()
+    Figure()
     {}
 };
 
 class Triangle: public Figure
 {
 public:
-    Triangle(int side, std::string name)
+    Triangle(int side, std::string name) : Figure(side, name)
     {
-        get_sides_count(side);
-        get_name(name);
+        
     }
 };
 
 class Quadrangle : public Figure
 {
 public:
-    Quadrangle (int side, std::string name)
+    Quadrangle(int side, std::string name) : Figure(side, name)
     {
-        get_sides_count(side);
-        get_name(name);
+        
     }
 };
 
@@ -66,12 +55,12 @@ int main()
     std::string name_quadrangle = "четырехугольник";
 
     Triangle t(side_triangle, name_triangle);
-    std::cout << t.get_sides_count(side_triangle) << std::endl;
-    std::cout << t.get_name(name_triangle) << std::endl;
+    std::cout << t.get_sides_count() << std::endl;
+    std::cout << t.get_name() << std::endl;
 
     Quadrangle q(side_quadrangle, name_quadrangle);
-    std::cout << q.get_sides_count(side_quadrangle) << std::endl;
-    std::cout << q.get_name(name_quadrangle) << std::endl;
+    std::cout << q.get_sides_count() << std::endl;
+    std::cout << q.get_name() << std::endl;
 }
 
 
