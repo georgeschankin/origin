@@ -23,7 +23,7 @@ public:
 
    static void sort(Address* addresses, int size) //сортировка
     {
-        std::string temp;
+       Address temp; //по условию задачи конструктор по умолчанию нельзя писать
         
         for (int i = 0; i < size - 1; i++) 
         {

@@ -6,7 +6,7 @@
 class Address
 {
 private:
-    int N, number_house, number_apartment;
+    int number_house, number_apartment;
     std::string city;
     std::string street;
 
@@ -47,18 +47,53 @@ int main()
     f_out << N;
     f_out << std::endl;
 
-    while (!f_in.eof())
-    {        
-        f_in >> city;
-        f_in >> street;
-        f_in >> number_house;
-        f_in >> number_apartment;
+    Address** addr = new Address* [N];
 
-        Address addr(number_house, number_apartment, city, street);
-        
-        f_out << addr.get_output_address();
-        f_out << std::endl;
+    for (int i = 0; i < N; i++)
+    {
+        *addr[i] = new Address(number_house, number_apartment, city, street)[4];
     }
+
+    /*for (int i = 0; i < N; i++)
+    {
+        f_in >> city; //город
+        f_in >> street; //улица
+        f_in >> number_house; //дом
+        f_in >> number_apartment; //квартира
+
+        addr[i] = new Address(number_house, number_apartment, city, street);
+    }*/
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            f_in >> city; //город
+            f_in >> street; //улица
+            f_in >> number_house; //дом
+            f_in >> number_apartment; //квартира
+
+            addr[i][j] = Address(number_house, number_apartment, city, street);
+
+            //f_out << addr.get_output_address();
+            //f_out << std::endl;
+        }
+    }
+    
+    for (int i = N; i >= 0; i--)
+    {
+        for (int j = 4; j >= 0; j--)
+        {
+            f_out << addr[i][j].get_output_address();
+        }
+    }
+                
+    for (int i = 0; i < N; i++)
+    {
+        delete[] addr[i];
+    }
+
+    delete[] addr;
 
     f_in.close();
     f_out.close();           
