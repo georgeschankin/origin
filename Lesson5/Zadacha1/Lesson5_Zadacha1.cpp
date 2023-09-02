@@ -31,7 +31,7 @@ public:
 class Triangle: public Figure
 {
 public:
-    Triangle(int side, std::string name) : Figure(side, name)
+    Triangle() : Figure(3, "треугольник")
     {
         
     }
@@ -40,7 +40,7 @@ public:
 class Quadrangle : public Figure
 {
 public:
-    Quadrangle(int side, std::string name) : Figure(side, name)
+    Quadrangle() : Figure(4, "четырехугольник")
     {
         
     }
@@ -54,11 +54,11 @@ int main()
     std::string name_triangle = "треугольник";
     std::string name_quadrangle = "четырехугольник";
 
-    Triangle t(side_triangle, name_triangle);
+    Triangle t;
     std::cout << t.get_sides_count() << std::endl;
     std::cout << t.get_name() << std::endl;
 
-    Quadrangle q(side_quadrangle, name_quadrangle);
+    Quadrangle q;
     std::cout << q.get_sides_count() << std::endl;
     std::cout << q.get_name() << std::endl;
 }
