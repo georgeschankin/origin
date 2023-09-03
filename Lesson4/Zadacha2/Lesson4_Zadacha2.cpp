@@ -30,7 +30,7 @@ public:
             for (int j = 0; j < size - i - 1; j++) 
             {
                 if (addresses[j].city > addresses[j + 1].city)
-                {                    
+                {
                     temp = addresses[j];
                     addresses[j] = addresses[j + 1];
                     addresses[j + 1] = temp;
@@ -45,7 +45,12 @@ public:
         this->street = street;
         this->number_apartment = number_apartment;
         this->number_house = number_house;
-    }       
+    }  
+
+    Address()
+    {}
+
+
 };
 
 
@@ -59,7 +64,7 @@ int main()
     f_out.open("out.txt");*/
 
     std::ifstream f_in("in.txt");
-    std::ofstream f_out("out.txt", std::ios::ou);
+    std::ofstream f_out("out.txt", std::ios::out);
 
     int N, number_house, number_apartment, i = 0;
     std::string city;
@@ -71,9 +76,14 @@ int main()
     f_out << std::endl;
 
     Address** adr = new Address*[N];
+
+    for (int i = 0; i < N; i++)
+    {
+        adr[i] = new Address[4];
+    }
    
     //читаю данные из файла
-    while (!f_in.eof())
+    /*while (!f_in.eof())
     {
         f_in >> city;
         f_in >> street;
@@ -84,9 +94,23 @@ int main()
                         
         i++;
         
+    }*/
+
+    //читаю данные из файла
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            f_in >> city; //город
+            f_in >> street; //улица
+            f_in >> number_house; //дом
+            f_in >> number_apartment; //квартира
+
+            adr[i][j] = Address(number_house, number_apartment, city, street);           
+        }
     }
-    Address s;        
-    f_out << s.get_output_address(*adr, N);
+
+    f_out << Address::get_output_address(*adr, N);
     
     for (int j = 0; j < N; j++)
     {
