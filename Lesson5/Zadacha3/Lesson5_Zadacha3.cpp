@@ -83,14 +83,10 @@ public:
 
     void print_info()
     {       
-        return Figure::print_info();       
-    }
-
-    void print_sides()
-    {
+        Figure::print_info(); 
         std::cout << "Стороны: " << "a = " << a << " " << "b = " << b << " " << "c = " << c << std::endl;
         std::cout << "Углы: " << "A = " << A << " " << "B = " << B << " " << "C = " << C << std::endl;
-    }
+    }    
 };
 
 class Right_Triangle : public Triangle
@@ -117,14 +113,8 @@ public:
 
     void print_info()
     {               
-        return Triangle::print_info();       
-    }
-
-    //не понимаю почему после команды return Triangle::print_info(); программа ничего не выводит, пришлось написать дополнительную функцию вывода
-    void print_sides()
-    {
-        return Triangle::print_sides();
-    }
+        Triangle::print_info();       
+    }   
 };
 
 class Isosceles_Triangle : public Triangle
@@ -155,13 +145,8 @@ public:
 
     void print_info()
     {
-        return Triangle::print_info();
-    }
-   
-    void print_sides()
-    {
-        return Triangle::print_sides();
-    }
+        Triangle::print_info();
+    }      
 };
 
 class Equilateral_Triangle : public Triangle
@@ -194,13 +179,8 @@ public:
 
     void print_info()
     {
-        return Triangle::print_info();
-    }
-
-    void print_sides()
-    {
-        return Triangle::print_sides();
-    }
+        Triangle::print_info();
+    }    
 };
 
 class Quadrangle : public Figure
@@ -240,11 +220,7 @@ public:
 
     void print_info()
     {
-        return Figure::print_info();
-    }
-
-    void print_sides()
-    {
+        Figure::print_info();
         std::cout << "Стороны: " << "a = " << a << " " << "b = " << b << " " << "c = " << c << " " << "d = " << d << std::endl;
         std::cout << "Углы: " << "A = " << A << " " << "B = " << B << " " << "C = " << C << " " << "D = " << D << std::endl;
     }
@@ -282,12 +258,7 @@ public:
 
     void print_info()
     {
-        return Quadrangle::print_info();
-    }
-
-    void print_sides()
-    {
-        return Quadrangle::print_sides();
+        Quadrangle::print_info();
     }
 };
 
@@ -323,12 +294,7 @@ public:
 
     void print_info()
     {
-        return Quadrangle::print_info();
-    }
-
-    void print_sides()
-    {
-        return Quadrangle::print_sides();
+        Quadrangle::print_info();
     }
 };
 
@@ -364,12 +330,7 @@ public:
 
     void print_info()
     {
-        return Quadrangle::print_info();
-    }
-
-    void print_sides()
-    {
-        return Quadrangle::print_sides();
+        Quadrangle::print_info();
     }
 };
 
@@ -405,12 +366,7 @@ public:
 
     void print_info()
     {
-        return Quadrangle::print_info();
-    }
-
-    void print_sides()
-    {
-        return Quadrangle::print_sides();
+        Quadrangle::print_info();
     }
 };
 
@@ -433,8 +389,7 @@ int main()
     std::string name1 = "Прямоугольный треугольник";
             
         Right_Triangle t1(name1, side_triangle, a1, b1, c1, A1, B1, C1);        
-        t1.print_info();
-        t1.print_sides();
+        t1.print_info();        
  
     std::cout << "\n";
 
@@ -445,7 +400,6 @@ int main()
             
         Equilateral_Triangle t2(name2, side_triangle, a2, b2, c2, A2, B2, C2);        
         t2.print_info();
-        t2.print_sides();
     
     std::cout << "\n";
 
@@ -456,7 +410,6 @@ int main()
            
         Isosceles_Triangle t3(name3, side_triangle, a3, b3, c3, A3, B3, C3);        
         t3.print_info();
-        t3.print_sides();
     
     std::cout << "\n";
 
@@ -467,7 +420,6 @@ int main()
            
         Square t4(name4, side_quarangle, a4, b4, c4, d4, A4, B4, C4, D4);
         t4.print_info();
-        t4.print_sides();
     
     std::cout << "\n";
 
@@ -478,7 +430,6 @@ int main()
            
         Parallelogram t5(name5, side_quarangle, a5, b5, c5, d5, A5, B5, C5, D5);
         t5.print_info();
-        t5.print_sides();
     
     std::cout << "\n";
 
@@ -489,6 +440,5 @@ int main()
             
         Square t6(name6, side_quarangle, a6, b6, c6, d6, A6, B6, C6, D6);
         t6.print_info();
-        t6.print_sides();
 
 }
