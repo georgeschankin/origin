@@ -16,39 +16,93 @@ public:
 
 	bool operator == (Fraction other)
 	{
-		return other.numerator_ == other.denominator_;
+		other.numerator_ = other.numerator_ * denominator_;
+		numerator_ = numerator_ * other.denominator_;
+		if (other.numerator_ == numerator_)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator != (Fraction other)
 	{
-		return other.numerator_ != other.denominator_;
+		other.numerator_ = other.numerator_ * denominator_;
+		numerator_ = numerator_ * other.denominator_;
+		if (other.numerator_ != numerator_)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator < (Fraction other)
 	{
-		return other.numerator_ < other.denominator_;
+		other.numerator_ = other.numerator_ * denominator_;
+		numerator_ = numerator_ * other.denominator_;
+		if (other.numerator_ < numerator_)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator > (Fraction other)
 	{
-		return other.numerator_ > other.denominator_;
+		other.numerator_ = other.numerator_ * denominator_;
+		numerator_ = numerator_ * other.denominator_;
+		if (other.numerator_ > numerator_)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator <= (Fraction other)
 	{
-		return other.numerator_ <= other.denominator_;
+		other.numerator_ = other.numerator_ * denominator_;
+		numerator_ = numerator_ * other.denominator_;
+		if (other.numerator_ <= numerator_)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator >= (Fraction other)
 	{
-		return other.numerator_ >= other.denominator_;
+		other.numerator_ = other.numerator_ * denominator_;
+		numerator_ = numerator_ * other.denominator_;
+		if (other.numerator_ >= numerator_)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 };
 
 int main()
 {
-	Fraction f1(4, 3);
-	Fraction f2(6, 4);
+	Fraction f1(3, 4);
+	Fraction f2(6, 8);
 
 	std::cout << "f1" << ((f1 == f2) ? " == " : " not == ") << "f2" << '\n';
 	std::cout << "f1" << ((f1 != f2) ? " != " : " not != ") << "f2" << '\n';

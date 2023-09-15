@@ -17,7 +17,8 @@ public:
 	// Наибольший общий делитель
 	int NOD(int a, int b) 
 	{
-		while (b > 0) {
+		while (b > 0) 
+		{
 			int c = a % b;
 			a = b;
 			b = c;
@@ -60,48 +61,65 @@ public:
 		return other.numerator_ >= other.denominator_;
 	}
 
-	std::string operator + (Fraction other)
+	Fraction operator + (Fraction other)
 	{
 		int union_Denominator = NOK(denominator_, other.denominator_);
 		int rel_Numerator = numerator_ * union_Denominator;
 		int mul_Numerator = other.numerator_ * union_Denominator;
 		numerator_ = rel_Numerator * mul_Numerator;
 		denominator_ = union_Denominator;
-		return std::to_string(numerator_) + "/" + std::to_string(denominator_);
+		return Fraction(numerator_, denominator_);
 	}
 
-	std::string operator - (Fraction other)
+	Fraction operator - (Fraction other)
 	{
 		int rel_Numerator = numerator_ * other.denominator_;
 		numerator_ = numerator_ * other.denominator_ - denominator_ * other.numerator_;
 		denominator_ = NOD(denominator_, other.denominator_);
-		return std::to_string(numerator_) + "/" + std::to_string(denominator_);
+		return Fraction(numerator_, denominator_);
 	}
 
-	std::string operator / (Fraction other)
+	Fraction operator / (Fraction other)
 	{
 		numerator_ = numerator_ * other.denominator_;
 		denominator_ = denominator_ * other.numerator_;
-		return std::to_string(numerator_) + "/" + std::to_string(denominator_);
+		return Fraction(numerator_, denominator_);
 	}
 
-	std::string operator * (Fraction other)
+	Fraction operator * (Fraction other)
 	{
 		numerator_ = numerator_ * other.numerator_;
 		denominator_ = denominator_ * other.denominator_;
-		return std::to_string(numerator_) + "/" + std::to_string(denominator_);
+		return Fraction(numerator_, denominator_);
 	}
 
-	int operator ++ (int)
+	Fraction operator ++ (int)
 	{
 		numerator_ = numerator_ + denominator_;		
-		return numerator_;
+		return Fraction(numerator_, denominator_);
 	}
 
-	int operator -- (int)
+	Fraction operator -- (int)
 	{
 		numerator_ = numerator_ - denominator_;
-		return numerator_;
+		return Fraction(numerator_, denominator_);
+	}
+
+	Fraction operator ++ ()
+	{
+		numerator_ = numerator_ + denominator_;
+		return Fraction(numerator_, denominator_);
+	}
+
+	Fraction operator -- ()
+	{
+		numerator_ = numerator_ - denominator_;
+		return Fraction(numerator_, denominator_);
+	}
+
+	void print()
+	{
+		std::cout << numerator_ << "/" << denominator_ << std::endl;
 	}
 };
 
@@ -136,10 +154,35 @@ int main()
 	Fraction f3(f1_n, f1_de);
 	Fraction f4(f2_n, f2_de);
 
-	std::cout << f1_n << "/" << f1_de << " + " << f2_n << "/" << f2_de << "=" << f3 + f4 << std::endl;
-	std::cout << f1_n << "/" << f1_de << " - " << f2_n << "/" << f2_de << "=" << f3 - f4 << std::endl;
-	std::cout << f1_n << "/" << f1_de << " * " << f2_n << "/" << f2_de << "=" << f3 * f4 << std::endl;
-	std::cout << f1_n << "/" << f1_de << " / " << f2_n << "/" << f2_de << "=" << f3 / f4 << std::endl;
-	std::cout << f1_n << "/" << f1_de << " ++ " << f3++ << "/" << f1_de << std::endl;
-	std::cout << f1_n << "/" << f1_de << " -- " << f3-- << "/" << f1_de << std::endl;
+	std::cout << f1_n << "/" << f1_de << " + " << f2_n << "/" << f2_de << "=";
+	Fraction fx = f3 + f4;
+	fx.print();
+
+	std::cout << f1_n << "/" << f1_de << " - " << f2_n << "/" << f2_de << "=" ;
+	fx = f3 - f4;
+	fx.print();
+
+	std::cout << f1_n << "/" << f1_de << " * " << f2_n << "/" << f2_de << "=" ;
+	fx = f3 * f4;
+	fx.print();
+
+	std::cout << f1_n << "/" << f1_de << " / " << f2_n << "/" << f2_de << "=" ;
+	fx = f3 / f4;
+	fx.print();
+
+	std::cout << f1_n << "/" << f1_de << " ++ " << " =";
+	Fraction fz = f3++;
+	fx.print();
+
+	std::cout << f1_n << "/" << f1_de << " -- " << " =";
+	fz = f3--;
+	fx.print();
+
+	std::cout << " ++ " << f1_n << "/" << f1_de << " = ";
+	Fraction fz = ++f3;
+	fx.print();
+
+	std::cout << " -- " << f1_n << "/" << f1_de << " = ";
+	fz = --f3;
+	fx.print();
 }
