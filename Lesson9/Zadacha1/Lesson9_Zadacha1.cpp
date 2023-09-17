@@ -16,9 +16,9 @@ public:
 
 	bool operator == (Fraction other)
 	{
-		other.numerator_ = other.numerator_ * denominator_;
-		numerator_ = numerator_ * other.denominator_;
-		if (other.numerator_ == numerator_)
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 == numerator_2)
 		{
 			return true;
 		}
@@ -30,9 +30,9 @@ public:
 
 	bool operator != (Fraction other)
 	{
-		other.numerator_ = other.numerator_ * denominator_;
-		numerator_ = numerator_ * other.denominator_;
-		if (other.numerator_ != numerator_)
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 != numerator_2)
 		{
 			return true;
 		}
@@ -44,9 +44,9 @@ public:
 
 	bool operator < (Fraction other)
 	{
-		other.numerator_ = other.numerator_ * denominator_;
-		numerator_ = numerator_ * other.denominator_;
-		if (other.numerator_ < numerator_)
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 < numerator_2)
 		{
 			return true;
 		}
@@ -58,9 +58,9 @@ public:
 
 	bool operator > (Fraction other)
 	{
-		other.numerator_ = other.numerator_ * denominator_;
-		numerator_ = numerator_ * other.denominator_;
-		if (other.numerator_ > numerator_)
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 > numerator_2)
 		{
 			return true;
 		}
@@ -72,9 +72,9 @@ public:
 
 	bool operator <= (Fraction other)
 	{
-		other.numerator_ = other.numerator_ * denominator_;
-		numerator_ = numerator_ * other.denominator_;
-		if (other.numerator_ <= numerator_)
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 <= numerator_2)
 		{
 			return true;
 		}
@@ -86,9 +86,9 @@ public:
 
 	bool operator >= (Fraction other)
 	{
-		other.numerator_ = other.numerator_ * denominator_;
-		numerator_ = numerator_ * other.denominator_;
-		if (other.numerator_ >= numerator_)
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 >= numerator_2)
 		{
 			return true;
 		}
