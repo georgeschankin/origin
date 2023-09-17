@@ -155,34 +155,34 @@ int main()
 	Fraction f4(f2_n, f2_de);
 
 	std::cout << f1_n << "/" << f1_de << " + " << f2_n << "/" << f2_de << "=";
-	Fraction fx = f3 + f4;
-	fx.print();
+	Fraction fx1 = f3 + f4;
+	fx1.print();
 
 	std::cout << f1_n << "/" << f1_de << " - " << f2_n << "/" << f2_de << "=" ;
-	fx = f3 - f4;
-	fx.print();
+	Fraction fx2 = f3 - f4;
+	fx2.print();
 
 	std::cout << f1_n << "/" << f1_de << " * " << f2_n << "/" << f2_de << "=" ;
-	fx = f3 * f4;
-	fx.print();
+	Fraction fx3 = f3 * f4;
+	fx3.print();
 
 	std::cout << f1_n << "/" << f1_de << " / " << f2_n << "/" << f2_de << "=" ;
-	fx = f3 / f4;
-	fx.print();
+	Fraction fx4 = f3 / f4;
+	fx4.print();
 
 	std::cout << f1_n << "/" << f1_de << " ++ " << " =";
-	Fraction fz = f3++;
-	fx.print();
+	Fraction fz1 = f3++;
+	fz1.print();
 
 	std::cout << f1_n << "/" << f1_de << " -- " << " =";
-	fz = f3--;
-	fx.print();
+	Fraction fz2 = f3--;
+	fz2.print();
 
 	std::cout << " ++ " << f1_n << "/" << f1_de << " = ";
-	Fraction fz = ++f3;
-	fx.print();
+	Fraction fz3 = ++f3;
+	fz3.print();
 
 	std::cout << " -- " << f1_n << "/" << f1_de << " = ";
-	fz = --f3;
-	fx.print();
+	Fraction fz4 = --f3;
+	fz4.print();
 }
