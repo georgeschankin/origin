@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include <string>
 
 class Fraction
 {
@@ -31,34 +30,99 @@ public:
 		return NOD(a, b) * a * b;
 	}
 
+	//сокращение дроби
+	Fraction reduce() 
+	{		
+		int numerator_1 = numerator_;
+		int denominator_1 = denominator_;
+		int nod = NOD(numerator_, denominator_);
+		numerator_1 /= nod;
+		denominator_1 /= nod;
+		return Fraction(numerator_1, denominator_1);
+	}
+
 	bool operator == (Fraction other)
 	{
-		return other.numerator_ == other.denominator_;
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 == numerator_2)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator != (Fraction other)
 	{
-		return other.numerator_ != other.denominator_;
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 != numerator_2)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator < (Fraction other)
 	{
-		return other.numerator_ < other.denominator_;
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 < numerator_2)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator > (Fraction other)
 	{
-		return other.numerator_ > other.denominator_;
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 > numerator_2)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator <= (Fraction other)
 	{
-		return other.numerator_ <= other.denominator_;
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 <= numerator_2)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	bool operator >= (Fraction other)
 	{
-		return other.numerator_ >= other.denominator_;
+		int numerator_1 = other.numerator_ * denominator_;
+		int numerator_2 = numerator_ * other.denominator_;
+		if (numerator_1 >= numerator_2)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	Fraction operator + (Fraction other)
@@ -66,55 +130,55 @@ public:
 		int union_Denominator = NOK(denominator_, other.denominator_);
 		int rel_Numerator = numerator_ * union_Denominator;
 		int mul_Numerator = other.numerator_ * union_Denominator;
-		numerator_ = rel_Numerator * mul_Numerator;
-		denominator_ = union_Denominator;
-		return Fraction(numerator_, denominator_);
+		int numerator_1 = rel_Numerator * mul_Numerator;
+		int denominator_1 = union_Denominator;
+		return Fraction(numerator_1, denominator_1);
 	}
 
 	Fraction operator - (Fraction other)
 	{
 		int rel_Numerator = numerator_ * other.denominator_;
-		numerator_ = numerator_ * other.denominator_ - denominator_ * other.numerator_;
-		denominator_ = NOD(denominator_, other.denominator_);
-		return Fraction(numerator_, denominator_);
+		int numerator_1 = numerator_ * other.denominator_ - denominator_ * other.numerator_;
+		int denominator_1 = NOD(denominator_, other.denominator_);
+		return Fraction(numerator_1, denominator_1);
 	}
 
 	Fraction operator / (Fraction other)
 	{
-		numerator_ = numerator_ * other.denominator_;
-		denominator_ = denominator_ * other.numerator_;
-		return Fraction(numerator_, denominator_);
+		int numerator_1 = numerator_ * other.denominator_;
+		int denominator_1 = denominator_ * other.numerator_;
+		return Fraction(numerator_1, denominator_1);
 	}
 
 	Fraction operator * (Fraction other)
 	{
-		numerator_ = numerator_ * other.numerator_;
-		denominator_ = denominator_ * other.denominator_;
-		return Fraction(numerator_, denominator_);
+		int numerator_1 = numerator_ * other.numerator_;
+		int denominator_1 = denominator_ * other.denominator_;
+		return Fraction(numerator_1, denominator_1);
 	}
 
 	Fraction operator ++ (int)
 	{
-		numerator_ = numerator_ + denominator_;		
-		return Fraction(numerator_, denominator_);
+		int numerator_1 = numerator_ + denominator_;
+		return Fraction(numerator_1, denominator_);
 	}
 
 	Fraction operator -- (int)
 	{
-		numerator_ = numerator_ - denominator_;
-		return Fraction(numerator_, denominator_);
+		int numerator_1 = numerator_ - denominator_;
+		return Fraction(numerator_1, denominator_);
 	}
 
 	Fraction operator ++ ()
 	{
-		numerator_ = numerator_ + denominator_;
-		return Fraction(numerator_, denominator_);
+		int numerator_1 = numerator_ + denominator_;
+		return Fraction(numerator_1, denominator_);
 	}
 
 	Fraction operator -- ()
 	{
-		numerator_ = numerator_ - denominator_;
-		return Fraction(numerator_, denominator_);
+		int numerator_1 = numerator_ - denominator_;
+		return Fraction(numerator_1, denominator_);
 	}
 
 	void print()
@@ -156,33 +220,41 @@ int main()
 
 	std::cout << f1_n << "/" << f1_de << " + " << f2_n << "/" << f2_de << "=";
 	Fraction fx1 = f3 + f4;
+	fx1.reduce();
 	fx1.print();
 
 	std::cout << f1_n << "/" << f1_de << " - " << f2_n << "/" << f2_de << "=" ;
 	Fraction fx2 = f3 - f4;
+	fx2.reduce();
 	fx2.print();
 
 	std::cout << f1_n << "/" << f1_de << " * " << f2_n << "/" << f2_de << "=" ;
 	Fraction fx3 = f3 * f4;
+	fx3.reduce();
 	fx3.print();
 
 	std::cout << f1_n << "/" << f1_de << " / " << f2_n << "/" << f2_de << "=" ;
 	Fraction fx4 = f3 / f4;
+	fx4.reduce();
 	fx4.print();
 
 	std::cout << f1_n << "/" << f1_de << " ++ " << " =";
 	Fraction fz1 = f3++;
+	fz1.reduce();
 	fz1.print();
 
 	std::cout << f1_n << "/" << f1_de << " -- " << " =";
 	Fraction fz2 = f3--;
+	fz2.reduce();
 	fz2.print();
 
 	std::cout << " ++ " << f1_n << "/" << f1_de << " = ";
 	Fraction fz3 = ++f3;
+	fz3.reduce();
 	fz3.print();
 
 	std::cout << " -- " << f1_n << "/" << f1_de << " = ";
 	Fraction fz4 = --f3;
+	fz4.reduce();
 	fz4.print();
 }
