@@ -35,9 +35,9 @@ public:
 	{		
 		int numerator_1 = numerator_;
 		int denominator_1 = denominator_;
-		int nod = NOD(numerator_, denominator_);
-		numerator_1 /= nod;
-		denominator_1 /= nod;
+		int nod = NOD(numerator_, denominator_);	
+        numerator_1 /= nod;
+		denominator_1 /= nod;				
 		return Fraction(numerator_1, denominator_1);
 	}
 
@@ -128,10 +128,10 @@ public:
 	Fraction operator + (Fraction other)
 	{
 		int union_Denominator = NOK(denominator_, other.denominator_);
-		int rel_Numerator = numerator_ * union_Denominator;
-		int mul_Numerator = other.numerator_ * union_Denominator;
-		int numerator_1 = rel_Numerator * mul_Numerator;
-		int denominator_1 = union_Denominator;
+		int rel_Numerator = numerator_ * other.denominator_;
+		int mul_Numerator = other.numerator_ * denominator_;
+		int numerator_1 = rel_Numerator + mul_Numerator;
+		int denominator_1 = union_Denominator;		
 		return Fraction(numerator_1, denominator_1);
 	}
 
@@ -220,7 +220,7 @@ int main()
 
 	std::cout << f1_n << "/" << f1_de << " + " << f2_n << "/" << f2_de << "=";
 	Fraction fx1 = f3 + f4;
-	fx1.reduce();
+	//fx1.reduce();
 	fx1.print();
 
 	std::cout << f1_n << "/" << f1_de << " - " << f2_n << "/" << f2_de << "=" ;
