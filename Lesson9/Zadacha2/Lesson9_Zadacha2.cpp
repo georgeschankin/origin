@@ -157,28 +157,30 @@ public:
 		return Fraction(numerator_1, denominator_1);
 	}
 
-	Fraction operator ++ (int)
-	{
-		int numerator_1 = numerator_ + denominator_;
-		return Fraction(numerator_1, denominator_);
+	Fraction operator ++ () //префиксный
+	{		
+		numerator_ = numerator_ + denominator_;
+		return *this;
 	}
 
-	Fraction operator -- (int)
+	Fraction operator -- () //префиксный
 	{
-		int numerator_1 = numerator_ - denominator_;
-		return Fraction(numerator_1, denominator_);
+		numerator_ = numerator_ - denominator_;
+		return *this;
 	}
 
-	Fraction operator ++ ()
+	Fraction operator ++ (int) //постфиксный
 	{
-		int numerator_1 = numerator_ + denominator_;
-		return Fraction(numerator_1, denominator_);
+		Fraction temp{numerator_, denominator_};
+		numerator_ += denominator_;
+		return temp;
 	}
 
-	Fraction operator -- ()
+	Fraction operator -- (int) //постфиксный
 	{
-		int numerator_1 = numerator_ - denominator_;
-		return Fraction(numerator_1, denominator_);
+		Fraction temp{numerator_, denominator_};
+		numerator_ -= denominator_;
+		return temp;
 	}
 
 	void print()
