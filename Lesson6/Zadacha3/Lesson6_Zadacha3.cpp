@@ -22,10 +22,10 @@ int main()
 
     if (C1 == 90)
     {
-        Figure* p1 = nullptr;
+        //Figure* p1 = nullptr;
         Right_Triangle t1(name1, a1, b1, c1, A1, B1, C1);
-        p1 = &t1;
-        print_info(p1);
+        //p1 = &t1;
+        t1.get_info();
     }
     else
     {
@@ -38,12 +38,12 @@ int main()
     double a2 = 30, b2 = 30, c2 = 30;
     double A2 = 60, B2 = 60, C2 = 60;
     std::string name2 = "Равносторонний треугольник";
-    if ((A2 == B2 == C2 == 60) && (a2 == b2 == c2))
+    if ((A2 == 60) && (B2 == 60) && (C2 == 60) && (a2 == b2) && (b2 == c2) && (a2 == c2))
     {
-        Figure* p2 = nullptr;
+        //Figure* p2 = nullptr;
         Equilateral_Triangle t2(name2, a2, A2);
-        p2 = &t2;
-        print_info(p2);
+        //p2 = &t2;
+        t2.get_info();
     }
     else
     {
@@ -58,10 +58,10 @@ int main()
     std::string name3 = "Равнобедренный треугольник";
     if ((A3 == C3) && (a3 == c3))
     {
-        Figure* p3 = nullptr;
+        //Figure* p3 = nullptr;
         Isosceles_Triangle t3(name3, a3, b3, A3, B3);
-        p3 = &t3;
-        print_info(p3);
+        //p3 = &t3;
+        t3.get_info();
     }
     else
     {
@@ -74,12 +74,12 @@ int main()
     double a4 = 30, b4 = 30, c4 = 30, d4 = 30;
     double A4 = 90, B4 = 90, C4 = 90, D4 = 90;
     std::string name4 = "Квадрат";
-    if ((A4 == C4 == B4 == D4) && (a4 == c4 == b4 == d4))
+    if ((A4 == C4) && (C4 == B4) && (B4 == D4) && (A4 == D4) && (a4 == c4) && (c4 == b4) && (b4 == d4) && (a4 == d4))
     {
-        Figure* p4 = nullptr;
+        //Figure* p4 = nullptr;
         Square t4(name4, a4, A4);
-        p4 = &t4;
-        print_info(p4);
+        //p4 = &t4;
+        t4.get_info();
     }
     else
     {
@@ -94,10 +94,10 @@ int main()
     std::string name5 = "Параллелограмм";
     if ((A5 == C5) && (B5 == D5) && (a5 == c5) && (b5 == d5))
     {
-        Figure* p5 = nullptr;
+        //Figure* p5 = nullptr;
         Parallelogram t5(name5, a4, b4, A4, B4);
-        p5 = &t5;
-        print_info(p5);
+        //p5 = &t5;
+        t5.get_info();
     }
     else
     {
@@ -110,12 +110,12 @@ int main()
     double a6 = 30, b6 = 30, c6 = 30, d6 = 30;
     double A6 = 70, B6 = 50, C6 = 70, D6 = 50;
     std::string name6 = "Ромб";
-    if ((A6 == C6) && (B6 == D6) && (a6 == c6 == b6 == d6))
+    if ((A6 == C6) && (B6 == D6) && (a6 == c6) && (c6 == b6) && (b6 == d6))
     {
-        Figure* p6 = nullptr;
+        //Figure* p6 = nullptr;
         Romb t6(name6, a6, A6, B6);
-        p6 = &t6;
-        print_info(p6);
+        //p6 = &t6;
+        t6.get_info();
     }
     else
     {

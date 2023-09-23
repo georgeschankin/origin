@@ -127,8 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Equilateral_Triangle.cpp" />
     <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="Isosceles_Triangle.cpp" />
     <ClCompile Include="Lesson6_Zadacha3.cpp" />
+    <ClCompile Include="Parallelogram.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="Right_Triangle.cpp" />
+    <ClCompile Include="Romb.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Equilateral_Triangle.h" />
