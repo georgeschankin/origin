@@ -7,14 +7,13 @@ class Address
 private:
     int number_house, number_apartment;
     std::string city;
-    std::string street;
-    //std::string temp;
+    std::string street;   
 
 public:
     static std::string get_output_address(Address* addresses, int N)
     {
         setlocale(LC_ALL, "Russian");
-        sort(addresses, N);
+        //sort(addresses, N);
         for (int i = 0; i < N; i++)
         {
            return (addresses[i].city + ", " + addresses[i].street + ", " + std::to_string(addresses[i].number_house) + ", " + std::to_string(addresses[i].number_apartment));
@@ -23,20 +22,20 @@ public:
 
    static void sort(Address* addresses, int size) //сортировка
     {
-       Address temp; //по условию задачи конструктор по умолчанию нельзя писать
+       Address temp;
         
-        for (int i = 0; i < size - 1; i++) 
-        {
-            for (int j = 0; j < size - i - 1; j++) 
-            {
-                if (addresses[j].city > addresses[j + 1].city)
-                {
-                    temp = addresses[j];
-                    addresses[j] = addresses[j + 1];
-                    addresses[j + 1] = temp;
-                }
-            }
-        }                      
+       for (int i = 0; i < size; i++)
+       {
+           for (int j = 0; j < size - i - 1; j++)
+           {
+               if (addresses[j].city < addresses[j + 1].city)
+               {
+                   temp = addresses[j];
+                   addresses[j] = addresses[j + 1];
+                   addresses[j + 1] = temp;
+               }
+           }
+       }
     }
 
     Address(int number_house, int number_apartment, std::string city, std::string street)
@@ -49,8 +48,6 @@ public:
 
     Address()
     {}
-
-
 };
 
 
@@ -66,7 +63,7 @@ int main()
     std::ifstream f_in("in.txt");
     std::ofstream f_out("out.txt", std::ios::out);
 
-    int N, number_house, number_apartment, i = 0;
+    int N, number_house, number_apartment;
     std::string city;
     std::string street;
 
@@ -75,50 +72,29 @@ int main()
     f_out << N;
     f_out << std::endl;
 
-    Address** adr = new Address*[N];
-
-    for (int i = 0; i < N; i++)
-    {
-        adr[i] = new Address[4];
-    }
-   
-    //читаю данные из файла
-    /*while (!f_in.eof())
-    {
-        f_in >> city;
-        f_in >> street;
-        f_in >> number_house;
-        f_in >> number_apartment;
-
-        adr[i] = new Address(number_house, number_apartment, city, street);
-                        
-        i++;
-        
-    }*/
-
+    Address* adr = new Address[N];
+             
     //читаю данные из файла
     for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            f_in >> city; //город
-            f_in >> street; //улица
-            f_in >> number_house; //дом
-            f_in >> number_apartment; //квартира
-
-            adr[i][j] = Address(number_house, number_apartment, city, street);           
-        }
+    {       
+       f_in >> city; //город
+       f_in >> street; //улица
+       f_in >> number_house; //дом
+       f_in >> number_apartment; //квартира
+       adr[i] = Address(number_house, number_apartment, city, street);       
     }
 
-    f_out << Address::get_output_address(*adr, N);
-    
-    for (int j = 0; j < N; j++)
-    {
-        delete[] adr[j];
-    }
+    //f_out << Address::get_output_address(adr, N);
 
+    Address::sort(adr, N);
+    for (int i = N - 1; i >= 0; i--)
+    {
+        f_out << Address::get_output_address(&adr[i], N);
+        f_out << std::endl;
+    }
+       
     delete[] adr;
-
+      
     f_in.close();
     f_out.close();
 }
