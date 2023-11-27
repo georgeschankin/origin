@@ -7,7 +7,8 @@ class smart_array
 private:
 	int size_, size2;
 	int* arr;
-	int* arr1;
+	//int* arr1;
+	int new_el;
 
 public:
 	smart_array(int size)
@@ -42,7 +43,7 @@ public:
 				obj.arr[i] = arr[i];
 			}
 		}
-		
+		throw "нельзя присваивать массив самому себе";//тоже не обрабатывает
 
 		return *this;
 	}
@@ -58,10 +59,11 @@ public:
 		return *arr1;
 	}*/
 
-	void add_element(int new_element)
+	int* add_element(int new_element)
 	{
+		this->new_el = new_element;
 		this->size2 = ++size_;
-		arr1 = new int[size2];
+		int *arr1 = new int[size2];
 
 		for (int i = 0; i < size2; i++)
 		{
@@ -71,27 +73,36 @@ public:
 			}
 			else
 			{
-				arr1[i] = new_element;
+				arr1[i] = new_el;
 			}
 		}
-		//return *arr1;
-		//delete[] arr1;
+		return arr1;
+		delete[] arr1;
 	}
 
 	int get_element(int index)
 	{
-		return arr1[index];
-		
-			if ((index >= size2) || (index < 0))
+		int* arr2 = new int[size2];
+		arr2 = add_element(new_el);
+
+		for (int i = 0; i < size2; i++)
+		{
+			if (i == index)
 			{
-				throw "введите корректный индекс"; //программа не обрабатывает исключение
+				return arr2[index];
 			}
+		}
+		if ((index >= size2) || (index < 0))
+		{
+			throw "введите корректный индекс"; //программа не обрабатывает исключение
+		}
+		delete[] arr2;
 		
 	}
 
 	~smart_array()
 	{
-		delete[] arr, arr1;
+		delete[] arr;
 	}
 };
 
