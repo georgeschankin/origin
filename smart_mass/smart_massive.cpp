@@ -21,13 +21,30 @@ public:
 		}
 	}
 
-	smart_array(smart_array& obj) //копирование
+	smart_array& operator =(const smart_array& obj) //копирование
 	{
-		arr = new int[obj.size_];
+		//arr = new int[obj.size_];
 
-		for (int i = 0; i < obj.size_; i++) { arr[i] = obj.arr[i]; }
+		if (size_ <= obj.size_)
+		{
+			arr = new int[obj.size_];
+			for (int i = 0; i < obj.size_; i++) 
+			{ 
+				arr[i] = obj.arr[i]; 
+			}
+			size_ = obj.size_;
+		}
+		else if (obj.size_ < size_)
+		{
+			arr = new int[size_];
+			for (int i = 0; i < size_; i++)
+			{
+				obj.arr[i] = arr[i];
+			}
+		}
+		
 
-		size_ = obj.size_;
+		return *this;
 	}
 
 	/*int copy_mass(int N, int* arr2)//копирование (не для задания 2)
@@ -41,12 +58,12 @@ public:
 		return *arr1;
 	}*/
 
-	void add_element(int new_size)
+	void add_element(int new_element)
 	{
-		this->size2 = new_size;
-		arr1 = new int[size2 + size_];
+		this->size2 = ++size_;
+		arr1 = new int[size2];
 
-		for (int i = 0; i < size2 + size_; i++)
+		for (int i = 0; i < size2; i++)
 		{
 			if (i < size_)
 			{
@@ -54,24 +71,22 @@ public:
 			}
 			else
 			{
-				arr1[i] = i;
+				arr1[i] = new_element;
 			}
 		}
+		//return *arr1;
+		//delete[] arr1;
 	}
 
 	int get_element(int index)
 	{
-		do
-		{
-			if (index >= size2 + size_)
-			{
-				std::cout << "индекс элемента должен быть меньше или равен размеру массива. Введите правильное значение " << std::endl;
-				std::cin >> index;
-				continue;
-			}
-			else { break; }
-		} while (index >= size2 + size_);
 		return arr1[index];
+		
+			if ((index >= size2) || (index < 0))
+			{
+				throw "введите корректный индекс"; //программа не обрабатывает исключение
+			}
+		
 	}
 
 	~smart_array()
@@ -95,7 +110,7 @@ int main()
 		arr.add_element(155);
 		arr.add_element(14);
 		arr.add_element(15);
-		std::cout << arr.get_element(16) << std::endl;
+		std::cout << arr.get_element(7) << std::endl;
 	}
 	catch (const std::exception& ex) 
 	{
@@ -112,7 +127,7 @@ int main()
 	new_array.add_element(44);
 	new_array.add_element(34);
 	
-	arr2 = new_array;//не понимаю как сделать данную операцию через =, ведь нельзя перегрузить оператор =, могу ли сделать через метод класса copy_mass ?
+	arr2 = new_array;
 
 	return 0;
 }
