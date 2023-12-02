@@ -1,9 +1,6 @@
-﻿  Broomstick.cpp
-  Plane.cpp
-  Создание кода...
-Camel.obj : error LNK2005: "double __cdecl rest(double,int)" (?rest@@YANNH@Z) уже определен в Boots.obj
-Camel_Speed.obj : error LNK2005: "double __cdecl rest(double,int)" (?rest@@YANNH@Z) уже определен в Boots.obj
-Centaur.obj : error LNK2005: "double __cdecl rest(double,int)" (?rest@@YANNH@Z) уже определен в Boots.obj
+﻿Camel.obj : error LNK2005: "double __cdecl rest(double,double,double)" (?rest@@YANNNN@Z) уже определен в Boots.obj
+Camel_Speed.obj : error LNK2005: "double __cdecl rest(double,double,double)" (?rest@@YANNNN@Z) уже определен в Boots.obj
+Centaur.obj : error LNK2005: "double __cdecl rest(double,double,double)" (?rest@@YANNNN@Z) уже определен в Boots.obj
 Eagle.obj : error LNK2005: "double __cdecl short_distance(double)" (?short_distance@@YANN@Z) уже определен в Broomstick.obj
 Plane.obj : error LNK2005: "double __cdecl short_distance(double)" (?short_distance@@YANN@Z) уже определен в Broomstick.obj
      Создается библиотека C:\Users\GazPron\source\repos\Transports\x64\Debug\Transports.lib и объект C:\Users\GazPron\source\repos\Transports\x64\Debug\Transports.exp

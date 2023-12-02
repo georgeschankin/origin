@@ -1,15 +1,21 @@
 #include "Boots.h"
 
-double rest(double t, int i)
+double rest(double S, double V, double t)
 {
-	//i - счетчик отдыхов
+	int value; //счетчик количества отдыхов
+	double time = 0; //количество часов отдыхов
+	value = (S / V) / t;
 
-	if (i == 1)
+	for (int i = 0; i < value; i++)
 	{
-		return 10;
-	}	
-	else
-	{
-		return 5;
+		if (i == 0)
+		{
+			time += 10;
+		}
+		else
+		{
+			time += 5;
+		}
 	}
+	return time;
 }

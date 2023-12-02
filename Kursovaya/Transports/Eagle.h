@@ -2,13 +2,13 @@
 #ifdef TRANSPORTS_EXPORTS
 #define TRANSPORTSEAGLE_API __declspec(dllexport)
 #else
-#define TRANSPORTSEAGLEAPI __declspec(dllimport)
+#define TRANSPORTSEAGLE_API __declspec(dllimport)
 #endif
 
 #include "Air_Transport.h"
-class Eagle :
-    public Air_Transport
+class Eagle : public Air_Transport
 {
-    TRANSPORTSEAGLE_API double short_distance(double S);
+public:
+    TRANSPORTSEAGLE_API static double short_distance(double S);
 };
 

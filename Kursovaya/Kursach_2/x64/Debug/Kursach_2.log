@@ -1,1 +1,9 @@
-﻿  Kursach_2.vcxproj -> C:\Users\GazPron\source\repos\Transports\x64\Debug\Kursach_2.exe
+﻿  Kursach_2.cpp
+Kursach_2.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static double __cdecl Boots::rest(double,double,double)" (__imp_?rest@Boots@@SANNNN@Z) в функции main.
+Kursach_2.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static double __cdecl Broomstick::short_distance(double)" (__imp_?short_distance@Broomstick@@SANN@Z) в функции main.
+Kursach_2.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static double __cdecl Camel::rest(double,double,double)" (__imp_?rest@Camel@@SANNNN@Z) в функции main.
+Kursach_2.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static double __cdecl Camel_Speed::rest(double,double,double)" (__imp_?rest@Camel_Speed@@SANNNN@Z) в функции main.
+Kursach_2.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static double __cdecl Centaur::rest(double,double,double)" (__imp_?rest@Centaur@@SANNNN@Z) в функции main.
+Kursach_2.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static double __cdecl Eagle::short_distance(double)" (__imp_?short_distance@Eagle@@SANN@Z) в функции main.
+Kursach_2.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static double __cdecl Plane::short_distance(double)" (__imp_?short_distance@Plane@@SANN@Z) в функции main.
+C:\Users\GazPron\source\repos\Transports\x64\Debug\Kursach_2.exe : fatal error LNK1120: неразрешенных внешних элементов: 7
