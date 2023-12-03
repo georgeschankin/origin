@@ -1,0 +1,12 @@
+﻿  shablon_1.cpp
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(35,1): warning C4346: "&": зависимое имя не является типом.
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(35,1): message : укажите префикс "typename" для задания типа
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(39,2): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "Table<T>"
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(35,16): error C2061: синтаксическая ошибка: идентификатор "&"
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(36,1): error C2334: непредвиденные лексемы перед "{"; пропуск вероятного тела функции
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(35,1): error C4596: &: недопустимое полное имя в объявлении члена
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(59,27): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "Table<int>"
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(36,1): error C2092: Тип элемента массива "&" не может быть функцией или абстрактным классом
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(36,5): error C2059: синтаксическая ошибка: {
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(60,11): error C2676: бинарный "[": "Table<int>" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
+C:\Users\GazPron\source\repos\shablon_1\shablon_1.cpp(61,24): error C2676: бинарный "[": "Table<int>" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
