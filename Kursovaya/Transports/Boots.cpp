@@ -1,10 +1,11 @@
 #include "Boots.h"
+#include <math.h>
 
-double rest(double S, double V, double t)
+double Boots::rest(/*double S, double V, double t*/)
 {
 	int value; //счетчик количества отдыхов
 	double time = 0; //количество часов отдыхов
-	value = (S / V) / t;
+	value = floor((S_ / V_) / t_);
 
 	for (int i = 0; i < value; i++)
 	{

@@ -2,6 +2,9 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+      <FullPath>C:\Users\GazPron\source\repos\Transports\x64\Debug\Transports.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
       <FullPath>C:\Users\GazPron\source\repos\Transports\x64\Debug\Kursach_2.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>

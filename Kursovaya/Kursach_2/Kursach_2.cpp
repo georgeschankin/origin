@@ -11,46 +11,9 @@
 #include "Race_Air_Land_Venicle.h"
 #include "Race_Air_Venicle.h"
 #include "Race_Land_Venicle.h"
+#include "Result_Sort.h"
 #include <math.h>
 #include <Windows.h>
-
-double sort(double *mass, int n)
-{
-    /* Отсортируем массив по убыванию */
-    for (int i = 0; i < n; ++i)
-    {
-        for (int r = 0; r < n - i - 1; r++)
-        {
-            if (mass[r] < mass[r + 1])
-            {
-                // Обмен местами
-                double temp = mass[r];
-                mass[r] = mass[r + 1];
-                mass[r + 1] = temp;
-            }
-        }
-    }
-    return *mass;
-}
-
-std::string sort_str(std::string* mass, int n)
-{
-    /* Отсортируем массив по убыванию */
-    for (int i = 0; i < n; ++i)
-    {
-        for (int r = 0; r < n - i - 1; r++)
-        {
-            if (mass[r] < mass[r + 1])
-            {
-                // Обмен местами
-                std::string temp = mass[r];
-                mass[r] = mass[r + 1];
-                mass[r + 1] = temp;
-            }
-        }
-    }
-    return *mass;
-}
 
 int main()
 {
@@ -78,7 +41,7 @@ int main()
 
     //регистрация транспорта
     int type_trans = 1; //вид  транспорта
-    int reg = 1; //регистрация или начать гонку
+    int reg; //регистрация или начать гонку
 
     int exit = 1; //повтор или выход
 
@@ -102,8 +65,7 @@ int main()
                 continue; 
             }
         } while ((type_race < 1) || (type_race > 3));
-
-        std::cout << "Укажите длину дистанции (должна быть положительной) ";
+      
         do
         {
             std::cout << "Укажите длину дистанции (должна быть положительной) ";
@@ -138,6 +100,14 @@ int main()
             double* trans = new double[N];          
             
             std::string* trans_name = new std::string[N];
+
+            Boots w(S, V_Boots, t1_Boots);
+            Camel e(S, V_Camel, t1_Camel);
+            Camel_Speed r(S, V_Camel_Speed, t1_Camel_Speed);
+            Centaur y(S, V_Centaur, t1_Centaur);
+            Eagle u(S);
+            Broomstick f(S);
+            Plane p(S);
             
             for (int i = 0; i < N; i++)
             {
@@ -149,32 +119,39 @@ int main()
                     std::cout << "2. Верблюд-быстроход" << std::endl;
                     std::cout << "3. Кентавр" << std::endl;
                     std::cout << "4. Ботинки-вездеходы" << std::endl;
-                    std::cout << "0. Закончить регистрацию" << std::endl;
+                    //std::cout << "0. Закончить регистрацию" << std::endl;
                     std::cin >> type_trans;
 
                     if (type_trans == 1)
                     {
-                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Camel, Camel::rest(S, V_Camel, t1_Camel));
+                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Camel, e.rest());
                         trans_name[i] = "Верблюд";
                     }
                     else if (type_trans == 2)
                     {
-                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Camel_Speed, Camel_Speed::rest(S, V_Camel_Speed, t1_Camel_Speed));
+                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Camel_Speed, r.rest());
                         trans_name[i] = "Верблюд-быстроход";
                     }
                     else if (type_trans == 3)
                     {
-                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Centaur, Centaur::rest(S, V_Centaur, t1_Centaur));
+                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Centaur, y.rest());
                         trans_name[i] = "Кентавр";
                     }
                     else if (type_trans == 4)
                     {
-                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Boots, Boots::rest(S, V_Boots, t1_Boots));
+                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Boots, w.rest());
                         trans_name[i] = "Ботинки-вездеходы";
                     }
-                    else
+
+                    /*if (i == N - 1)
                     {
-                        std::cout << "1. Зарегистрировать транспорт " << std::endl;
+                        sort(trans, N);
+                        sort_str(trans_name, N);
+                        std::cout << "Первый победил" << std::endl;
+                        //delete[] trans, trans_name;
+                        break;
+
+                        /*std::cout << "1. Зарегистрировать транспорт " << std::endl;
                         std::cout << "2. Начать гонку " << std::endl;
                         std::cin >> reg;
                         if (reg == 1)
@@ -184,13 +161,13 @@ int main()
                         }
                         else
                         {
-                            std::cout << sort(trans, N);
-                            std::cout << sort_str(trans_name, N);
+                            sort(trans, N);
+                            sort_str(trans_name, N);
                             std::cout << "Последний победил" << std::endl;
                             //delete[] trans, trans_name;
                             break;
                         }
-                    }
+                    }*/
                 }
                 else if ((type_race == 2) && (reg == 1))
                 {
@@ -199,27 +176,34 @@ int main()
                     std::cout << "5. Ковёр-самолёт" << std::endl;
                     std::cout << "6. Орёл" << std::endl;
                     std::cout << "7. Метла" << std::endl;
-                    std::cout << "0. Закончить регистрацию" << std::endl;
+                    //std::cout << "0. Закончить регистрацию" << std::endl;
                     std::cin >> type_trans;
 
                     if (type_trans == 5)
                     {
-                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Plane, Plane::short_distance(S));
+                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Plane, p.short_distance());
                         trans_name[i] = "Ковёр-самолёт";
                     }
                     else if (type_trans == 6)
                     {
-                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Eagle, Eagle::short_distance(S));
+                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Eagle, u.short_distance());
                         trans_name[i] = "Орёл";
                     }
                     else if (type_trans == 7)
                     {
-                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Broomstick, Broomstick::short_distance(S));
+                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Broomstick, f.short_distance());
                         trans_name[i] = "Метла";
                     }
-                    else
+
+                    /*if (i == N - 1)
                     {
-                        std::cout << "1. Зарегистрировать транспорт " << std::endl;
+                        sort(trans, N);
+                        sort_str(trans_name, N);
+                        std::cout << "Первый победил" << std::endl;
+                        //delete[] trans, trans_name;
+                        break;
+
+                        /*std::cout << "1. Зарегистрировать транспорт " << std::endl;
                         std::cout << "2. Начать гонку " << std::endl;
                         std::cin >> reg;
                         if (reg == 1)
@@ -229,13 +213,13 @@ int main()
                         }
                         else
                         {
-                            std::cout << sort(trans, N);
-                            std::cout << sort_str(trans_name, N);
+                            sort(trans, N);
+                            sort_str(trans_name, N);
                             std::cout << "Последний победил" << std::endl;
                             //delete[] trans, trans_name;
                             break;
                         }
-                    }
+                    }*/
                 }
                 else if ((type_race == 3) && (reg == 1))
                 {
@@ -248,48 +232,55 @@ int main()
                     std::cout << "5. Ковёр-самолёт" << std::endl;
                     std::cout << "6. Орёл" << std::endl;
                     std::cout << "7. Метла" << std::endl;
-                    std::cout << "0. Закончить регистрацию" << std::endl;
+                    //std::cout << "0. Закончить регистрацию" << std::endl;
                     std::cin >> type_trans;
 
                     if (type_trans == 1)
                     {
                         //trans3[i] = Race_Air_Land_Venicle::final_air_land_distance(S, V_Camel, Camel::rest(S, V_Camel, t1_Camel), 0.0, 1);
-                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Camel, Camel::rest(S, V_Camel, t1_Camel));
+                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Camel, e.rest());
                         trans_name[i] = "Верблюд";
                     }
                     else if (type_trans == 2)
                     {
-                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Camel_Speed, Camel_Speed::rest(S, V_Camel_Speed, t1_Camel_Speed));
+                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Camel_Speed, r.rest());
                         trans_name[i] = "Верблюд-быстроход";
                     }
                     else if (type_trans == 3)
                     {
-                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Centaur, Centaur::rest(S, V_Centaur, t1_Centaur));
+                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Centaur, y.rest());
                         trans_name[i] = "Кентавр";
                     }
                     else if (type_trans == 4)
-                    {
-                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Boots, Boots::rest(S, V_Boots, t1_Boots));
+                    {                                         
+                        trans[i] = Race_Land_Venicle::final_land_distance(S, V_Boots, w.rest());
                         trans_name[i] = "Ботинки-вездеходы";
                     }
                     if (type_trans == 5)
                     {
-                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Plane, Plane::short_distance(S));
+                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Plane, p.short_distance());
                         trans_name[i] = "Ковёр-самолёт";
                     }
                     else if (type_trans == 6)
                     {
-                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Eagle, Eagle::short_distance(S));
+                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Eagle, u.short_distance());
                         trans_name[i] = "Орёл";
                     }
                     else if (type_trans == 7)
                     {
-                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Broomstick, Broomstick::short_distance(S));
+                        trans[i] = Race_Air_Venicle::final_air_distance(S, V_Broomstick, f.short_distance());
                         trans_name[i] = "Метла";
                     }
-                    else
+
+                    /*if (i == N - 1)
                     {
-                        std::cout << "1. Зарегистрировать транспорт " << std::endl;
+                        sort(trans, N);
+                        sort_str(trans_name, N);
+                        std::cout << "Первый победил" << std::endl;
+                        //delete[] trans, trans_name;
+                        break;
+
+                        /*std::cout << "1. Зарегистрировать транспорт " << std::endl;
                         std::cout << "2. Начать гонку " << std::endl;
                         std::cin >> reg;
                         if (reg == 1)
@@ -299,16 +290,31 @@ int main()
                         }
                         else
                         {
-                            std::cout << sort(trans, N);
-                            std::cout << sort_str(trans_name, N);
+                            sort(trans, N);
+                            sort_str(trans_name, N);
                             std::cout << "Последний победил" << std::endl;
                             //delete[] trans, trans_name;
                             break;
                         }
-                    }                   
+                    }*/
+                    
                 }
+
+                
+
+                i++;
             }
-            delete[] trans, trans_name;
+
+            Result_Sort* result = new Result_Sort[N];
+            for (int i = 0; i < N; i++)
+            {
+                result[i] = Result_Sort(trans[i], trans_name[i]);
+            }
+
+            Result_Sort::sort(result, N);
+           
+            delete[] trans, trans_name, result;
+            break;
         }while (reg == 1);
         
         std::cout << "повторить гонку или стоп (1 - повтор, любое другое число - стоп) ";

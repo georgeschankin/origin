@@ -6,10 +6,15 @@
 #endif
 
 #include "Air_Transport.h"
-class Broomstick :
-    public Air_Transport
+class Broomstick : public Air_Transport
 {
 public:
-    TRANSPORTSBROOM_API static double short_distance(double S);
+    double S_;
+
+    Broomstick(double S)
+    {
+        this->S_ = S;
+    }
+    TRANSPORTSBROOM_API double short_distance(/*double S*/);
 };
 

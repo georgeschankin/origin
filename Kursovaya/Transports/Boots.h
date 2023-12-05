@@ -9,6 +9,15 @@
 class Boots : public Land_Transport
 {
 public:
-    TRANSPORTSBOOTS_API static double rest(double S, double V, double t);
+    double S_, V_, t_;
+
+    Boots(double S, double V, double t)
+    {
+        this->S_ = S;
+        this->V_ = V;
+        this->t_ = t;
+    }
+
+    TRANSPORTSBOOTS_API double rest(/*double S, double V, double t*/);
 };
 

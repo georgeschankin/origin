@@ -1,14 +1,14 @@
 #include "Broomstick.h"
 #include <math.h>
 
-double short_distance(double S)
+double Broomstick::short_distance(/*double S*/)
 {
-	if (S < 1000)
+	if (S_ < 1000)
 	{
 		return 0;
 	}
 	else
 	{
-       return floor(S / 1000);
+       return floor(S_ / 1000);
 	}	
 }

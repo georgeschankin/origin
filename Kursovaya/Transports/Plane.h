@@ -9,6 +9,13 @@
 class Plane : public Air_Transport
 {
 public:
-    TRANSPORTSPLANE_API static double short_distance(double S);
+    double S_;
+
+    Plane(double S)
+    {
+        this->S_ = S;
+    }
+
+    TRANSPORTSPLANE_API double short_distance(/*double S*/);
 };
 

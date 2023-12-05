@@ -51,6 +51,9 @@
     <ClInclude Include="..\Races\Race_Land_Venicle.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Result_Sort.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Land_Transport.cpp">
@@ -87,6 +90,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="..\Races\Race_Land_Venicle.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Result_Sort.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

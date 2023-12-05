@@ -9,6 +9,13 @@
 class Eagle : public Air_Transport
 {
 public:
-    TRANSPORTSEAGLE_API static double short_distance(double S);
+    double S_;
+
+    Eagle(double S)
+    {
+        this->S_ = S;
+    }
+
+    TRANSPORTSEAGLE_API double short_distance(/*double S*/);
 };
 

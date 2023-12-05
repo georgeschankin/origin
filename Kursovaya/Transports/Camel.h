@@ -9,5 +9,14 @@
 class Camel : public Land_Transport
 {
 public:
-    TRANSPORTSCAMEL_API static double rest(double S, double V, double t);
+    double S_, V_, t_;
+
+    Camel(double S, double V, double t)
+    {
+        this->S_ = S;
+        this->V_ = V;
+        this->t_ = t;
+    }
+
+    TRANSPORTSCAMEL_API double rest(/*double S, double V, double t*/);
 };

@@ -1,6 +1,6 @@
 #include "Eagle.h"
 
-double short_distance(double S)
+double Eagle::short_distance(/*double S*/)
 {	
 	return 6;
 }

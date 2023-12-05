@@ -9,6 +9,15 @@
 class Camel_Speed : public Land_Transport
 {
 public:
-    TRANSPORTSCAMELSPEED_API static double rest(double S, double V, double t);
+    double S_, V_, t_;
+
+    Camel_Speed(double S, double V, double t)
+    {
+        this->S_ = S;
+        this->V_ = V;
+        this->t_ = t;
+    }
+
+    TRANSPORTSCAMELSPEED_API double rest(/*double S, double V, double t*/);
 };
 
