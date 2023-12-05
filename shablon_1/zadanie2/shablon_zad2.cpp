@@ -47,14 +47,14 @@ public:
 
         this->value = obj;
         Table<T>(*this, L) = value;
-        return Table<T>(*this, L);
-        //return arr[*this][L] = value;
+        //return Table<T>(*this, L);
+        return arr[*this][L] = value;
     }
 
-    Table<T>& operator <<(std::ostream& out, const int num)
+    std::ostream& operator <<(std::ostream& out, const Table<T>& num)
     {  
         out << num;
-        return arr[this][out];
+        return out;
     }
 
     ~Table()
