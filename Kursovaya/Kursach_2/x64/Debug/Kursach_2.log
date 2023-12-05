@@ -1,3 +1,2 @@
 ﻿  Kursach_2.cpp
-Kursach_2.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static void __cdecl Result_Sort::sort(class Result_Sort *,int)" (__imp_?sort@Result_Sort@@SAXPEAV1@H@Z) в функции main.
-C:\Users\GazPron\source\repos\Transports\x64\Debug\Kursach_2.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
+  Kursach_2.vcxproj -> C:\Users\GazPron\source\repos\Transports\x64\Debug\Kursach_2.exe

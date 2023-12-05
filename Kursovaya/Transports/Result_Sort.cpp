@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-void static sort(Result_Sort* res, int size)
+void Result_Sort::sort(Result_Sort* res, int size)
 {
     setlocale(LC_ALL, "Russian");
 
