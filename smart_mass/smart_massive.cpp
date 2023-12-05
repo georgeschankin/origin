@@ -6,9 +6,9 @@ class smart_array
 {
 private:
 	int size_, size2;
-	int* arr;
+	int* arr, *arr1;
 	//int* arr1;
-	int new_el;
+	//int new_el;
 
 public:
 	smart_array(int size)
@@ -24,85 +24,94 @@ public:
 
 	smart_array& operator =(const smart_array& obj) //копирование
 	{
-		//arr = new int[obj.size_];
+		arr = new int[obj.size_];
 
-		if (size_ <= obj.size_)
+		if (this != &obj)
 		{
-			arr = new int[obj.size_];
-			for (int i = 0; i < obj.size_; i++) 
-			{ 
-				arr[i] = obj.arr[i]; 
-			}
-			size_ = obj.size_;
-		}
-		else if (obj.size_ < size_)
-		{
-			arr = new int[size_];
-			for (int i = 0; i < size_; i++)
+			if (size_ <= obj.size_)
 			{
-				obj.arr[i] = arr[i];
+				//arr[obj.size_];
+				for (int i = 0; i < obj.size_; i++) 
+				{ 
+					arr[i] = obj.arr[i]; 
+				}
+				size_ = obj.size_;
+				size2 = ++size_;
+			}
+			else if (obj.size_ < size_)
+			{
+				//arr[size_];
+				for (int i = 0; i < size_; i++)
+				{
+					obj.arr[i] = arr[i];
+				}
 			}
 		}
-		throw "нельзя присваивать массив самому себе";//тоже не обрабатывает
-
 		return *this;
 	}
 
-	/*int copy_mass(int N, int* arr2)//копирование (не для задания 2)
+	smart_array(const smart_array& rhs)
 	{
-		arr1 = new int[N];
-		for (int i = 0; i < N; i++)
+		arr = new int[rhs.size_];
+
+		if (this != &rhs)
 		{
-			arr1[i] = arr2[i];
-		}
+			if (size_ <= rhs.size_)
+			{
+				for (int i = 0; i < rhs.size_; i++)
+				{
+					arr[i] = rhs.arr[i];
+				}
+				size_ = rhs.size_;
+			}
+			else if (rhs.size_ < size_)
+			{
+				for (int i = 0; i < size_; i++)
+				{
+					rhs.arr[i] = arr[i];
+				}
+			}
+		}	
+	}
 
-		return *arr1;
-	}*/
-
-	int* add_element(int new_element)
+	void add_element(int new_element)
 	{
-		this->new_el = new_element;
+		//this->new_el = new_element;
 		this->size2 = ++size_;
-		int *arr1 = new int[size2];
+		arr1 = new int[size2];
 
 		for (int i = 0; i < size2; i++)
 		{
-			if (i < size_)
+			if (i < size2 - 1)
 			{
 				arr1[i] = arr[i];
 			}
 			else
 			{
-				arr1[i] = new_el;
+				arr1[i] = new_element;
 			}
 		}
-		return arr1;
-		delete[] arr1;
+		//return arr1;
+		//delete[] arr;
 	}
 
 	int get_element(int index)
 	{
-		int* arr2 = new int[size2];
-		arr2 = add_element(new_el);
-
 		for (int i = 0; i < size2; i++)
 		{
-			if (i == index)
-			{
-				return arr2[index];
-			}
+			std::cout << arr1[i] << std::endl; //записал чтобы проверить какие элементы не выводит. В итоге получается что выводит с 0-4 (первые 5), предпоследний записывает нулем, 9 (последний), остальные элементы массива будто не записываются
 		}
+	    return arr1[index];
+			
 		if ((index >= size2) || (index < 0))
 		{
-			throw "введите корректный индекс"; //программа не обрабатывает исключение
+			throw "введите корректный индекс";
 		}
-		delete[] arr2;
-		
 	}
 
 	~smart_array()
 	{
-		delete[] arr;
+		delete[] arr, arr1;
 	}
 };
 
@@ -119,9 +128,10 @@ int main()
 		arr.add_element(1);
 		arr.add_element(4);
 		arr.add_element(155);
-		arr.add_element(14);
-		arr.add_element(15);
-		std::cout << arr.get_element(7) << std::endl;
+		arr.add_element(23);
+		arr.add_element(17);
+		
+		std::cout << "get_element = " << arr.get_element(5) << std::endl;
 	}
 	catch (const std::exception& ex) 
 	{
