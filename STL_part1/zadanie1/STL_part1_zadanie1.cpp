@@ -3,6 +3,7 @@
 #include <string>
 #include <cstring>
 #include <map>
+#include <Windows.h>
 
 class Result_Sort
 {
@@ -45,21 +46,36 @@ public:
 int main()
 {
     setlocale(LC_ALL, "rus");
-    int value, mass_value[11]; //счетчик символов, массив счетчиков
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
 
-    std::map<int, std::string> stroka;     
+    int value, *mass_value, i = 0; //счетчик символов, массив счетчиков, счетчик строк в цикле
+    std::string word;
 
-    stroka[0] = "H";
-    stroka[1] = "e";
-    stroka[2] = "l";
-    stroka[3] = "l";
-    stroka[4] = "o";
-    stroka[5] = " ";
-    stroka[6] = "w";
-    stroka[7] = "o";
-    stroka[8] = "r";
-    stroka[9] = "l";
-    stroka[10] = "d";
+    std::map<int, std::string> stroka;   
+
+    /*do
+    {
+        std::cin >> stroka[i];
+        i++;
+        
+        if (stroka[i] == "хватит")
+        {
+            break;
+        }                             
+    } while (/*stroka[i] != "хватит"*/ //std::cin >> stroka[i]);
+
+    while (std::cin >> word) //почему-то работает только так, не пойму почему
+    {
+        stroka[i] = word;  // вставка    
+        i++;
+        if (word == "хватит")
+        {
+            break;
+        }
+    }
+
+    mass_value = new int[stroka.size()];
 
     for (int i = 0; i < stroka.size(); i++)
     {
@@ -88,8 +104,7 @@ int main()
 
     Result_Sort::sort(result, stroka.size());
 
-    delete[] result;
-
-    
+    delete[] result, mass_value;
+   
     return 0;
 }
