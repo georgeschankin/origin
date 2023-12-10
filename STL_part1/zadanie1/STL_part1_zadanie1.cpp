@@ -9,9 +9,9 @@ class Result_Sort
 {
 public:
     int value_;
-    std::string sym_;
+    char sym_;
 
-    Result_Sort(int value, std::string sym)
+    Result_Sort(int value, char sym)
     {
         this->value_ =  value;
         this->sym_ = sym;
@@ -49,27 +49,16 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    int value, *mass_value, i = 0; //счетчик символов, массив счетчиков, счетчик строк в цикле
-    std::string word;
+    int value, * mass_value, k = 0; //счетчик символов, массив счетчиков, счетчик строк в цикле
+    char word;
 
-    std::map<int, std::string> stroka;   
+    std::map<int, char> stroka;
 
-    /*do
+    while (std::cin >> word)
     {
-        std::cin >> stroka[i];
-        i++;
-        
-        if (stroka[i] == "хватит")
-        {
-            break;
-        }                             
-    } while (/*stroka[i] != "хватит"*/ //std::cin >> stroka[i]);
-
-    while (std::cin >> word) //почему-то работает только так, не пойму почему
-    {
-        stroka[i] = word;  // вставка    
-        i++;
-        if (word == "хватит")
+        stroka[k] = word;   
+        k++;
+        if (word == 'x') //можно ли для красоты прописать так чтобы цикл заканчивался после нажатия enter?
         {
             break;
         }
@@ -90,7 +79,7 @@ int main()
             if (stroka[i] == stroka[j])
             {
                 value++;
-            }
+            }          
         }    
         mass_value[i] = value;
     }
