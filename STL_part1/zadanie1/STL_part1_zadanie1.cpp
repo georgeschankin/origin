@@ -50,15 +50,20 @@ int main()
     SetConsoleOutputCP(1251);
 
     int value, * mass_value, k = 0; //счетчик символов, массив счетчиков, счетчик строк в цикле
-    char word;
+    //char word;
+    std::string word;
 
-    std::map<int, char> stroka;
+    std::map<int, char> stroka;  
 
     while (std::cin >> word)
     {
-        stroka[k] = word;   
-        k++;
-        if (word == 'x') //можно ли для красоты прописать так чтобы цикл заканчивался после нажатия enter?
+        //stroka[k] = word;   
+        for (int i = 0; i < word.size(); i++)
+        {
+            stroka[i] = word[i];
+        }              
+
+        if (word == "х")
         {
             break;
         }
