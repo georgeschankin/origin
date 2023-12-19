@@ -5,13 +5,12 @@
 class smart_array
 {
 private:
-	int size_, size2;
-	int* arr, *arr1;
-	//int* arr1;
-	//int new_el;
-
+	int size_;
+	int* arr;
+	int count_ = 0;
+	
 public:
-	smart_array(int size)
+	smart_array(const int size)
 	{
 		this->size_=size;
 
@@ -22,96 +21,66 @@ public:
 		}
 	}
 
-	smart_array& operator =(const smart_array& obj) //копирование
-	{
-		arr = new int[obj.size_];
-
+	smart_array& operator =(const smart_array& obj)
+	{		
 		if (this != &obj)
-		{
-			if (size_ <= obj.size_)
+		{			
+			this->size_ = obj.size_;
+
+			delete[] arr;
+
+			arr = new int[obj.size_];
+
+			for (int i = 0; i < obj.size_; i++)
 			{
-				//arr[obj.size_];
-				for (int i = 0; i < obj.size_; i++) 
-				{ 
-					arr[i] = obj.arr[i]; 
-				}
-				size_ = obj.size_;
-				size2 = ++size_;
-			}
-			else if (obj.size_ < size_)
-			{
-				//arr[size_];
-				for (int i = 0; i < size_; i++)
-				{
-					obj.arr[i] = arr[i];
-				}
-			}
+				this->arr[i] = obj.arr[i];
+			}			
+			return *this;
 		}
 		return *this;
 	}
 
 	smart_array(const smart_array& rhs)
-	{
+	{		
+		this->size_ = rhs.size_;
+		
 		arr = new int[rhs.size_];
-
-		if (this != &rhs)
+		
+		for (int i = 0; i < rhs.size_; i++)
 		{
-			if (size_ <= rhs.size_)
-			{
-				for (int i = 0; i < rhs.size_; i++)
-				{
-					arr[i] = rhs.arr[i];
-				}
-				size_ = rhs.size_;
-			}
-			else if (rhs.size_ < size_)
-			{
-				for (int i = 0; i < size_; i++)
-				{
-					rhs.arr[i] = arr[i];
-				}
-			}
-		}	
+			this->arr[i] = rhs.arr[i];
+		}
+		std::cout << std::endl;
 	}
 
-	void add_element(int new_element)
+	void add_element(const int new_element)
 	{
-		//this->new_el = new_element;
-		this->size2 = ++size_;
-		arr1 = new int[size2];
-
-		for (int i = 0; i < size2; i++)
+		if (count_ >= size_)
 		{
-			if (i < size2 - 1)
-			{
-				arr1[i] = arr[i];
-			}
-			else
-			{
-				arr1[i] = new_element;
-			}
+			throw std::out_of_range("ошибка добавления элемента");
 		}
-		//return arr1;
-		//delete[] arr;
+		else
+		{
+			arr[count_] = new_element;
+			++count_;
+		}
 	}
 
-	int get_element(int index)
-	{
-		for (int i = 0; i < size2; i++)
+	int get_element(const int index)
+	{					
+		if ((index >= size_) || (index < 0))
 		{
-			std::cout << arr1[i] << std::endl; //записал чтобы проверить какие элементы не выводит. В итоге получается что выводит с 0-4 (первые 5), предпоследний записывает нулем, 9 (последний), остальные элементы массива будто не записываются
+			throw std::out_of_range("введите корректный индекс");
 		}
-	    return arr1[index];
-			
-		if ((index >= size2) || (index < 0))
+		else
 		{
-			throw "введите корректный индекс";
+			return arr[index];
 		}
 	}
 
 	~smart_array()
 	{
-		delete[] arr, arr1;
+		delete[] arr;
 	}
 };
 
@@ -131,7 +100,7 @@ int main()
 		arr.add_element(23);
 		arr.add_element(17);
 		
-		std::cout << "get_element = " << arr.get_element(5) << std::endl;
+		std::cout << "get_element = " << arr.get_element(3) << std::endl;
 	}
 	catch (const std::exception& ex) 
 	{
