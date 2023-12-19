@@ -5,16 +5,18 @@
 template<typename T>
 class Table
 {
+private:
+    int l, c;
+    int size_ = 0;
+    T** arr;
+
 public:
-    int l, c, L, C;
-    int value;
-    int* arr;
-    Table(int unsigned line, int unsigned column)
+    Table(int line, int column)
     {
         this->l = line;
-        this->c = column;
+        this->c = column;    
 
-         arr = new int [l];
+        arr = new T* [l];
 
         for (int i = 0; i < l; i++)
         {
@@ -22,41 +24,100 @@ public:
         }
     }
 
-    Table<T>& operator [](const int unsigned a)
-    {
-        this->C = a;
-        //return Table<T>(*this, C);
-        return arr[*this][L];
-    }
-
-    const Table<T>& operator [](const unsigned int a) const
-    {
-        this->C = a;
-        //return Table<T>(*this, C);
-        return arr[*this][L];     
-    }
-
-    Table<T>& operator =(const int obj)
-    {
-        /*if (this != &obj)
+    Table(const Table& other)
+    {        
+        this->l = other.l;
+        this->c = other.c;
+       
+        arr = new T* [l];
+        for (int i = 0; i < l; i++)
         {
-            l = obj.l;
-            c = obj.c;
-        }
-        return *this;*/
+            arr[i] = new T[c];
+        }       
+        
+        for (size_t i = 0; i < other.l; i++)
+        {
+            for (size_t j = 0; j < other.c; j++)
+            {
+                arr[i][j] = other.arr[i][j];
+            }
+        }       
+    };
 
-        this->value = obj;
-        Table<T>(*this, L) = value;
-        //return Table<T>(*this, L);
-        return arr[*this][L] = value;
+    T& operator()(int i, int j)
+    {
+        if (i >= l || i < 0) throw std::out_of_range("индекс (i) вне диапазона");
+        if (j >= c || j < 0) throw std::out_of_range("индекс (j) вне диапазона");
+
+        return arr[i][j];
+    };
+
+    Table<T>& operator =(const Table<T>& obj)
+    {
+        if (this != &obj)
+        {
+            this->c = obj.c;
+            this->l = obj.l;
+           
+            this->~Table();
+           
+            arr = new T* [l] ;
+            for (int i = 0; i < l; i++)
+            {
+                arr[i] = new T[c]{};
+            }           
+
+            //копирование
+            for (size_t i = 0; i < obj.l; i++)
+            {
+                for (size_t j = 0; j < obj.c; j++)
+                {
+                    arr[i][j] = obj.arr[i][j];
+                }
+            }           
+            return *this;
+        }  
+        return *this;
     }
 
-    std::ostream& operator <<(std::ostream& out, const Table<T>& num)
-    {  
-        out << num;
+            class wrapper_line
+            {
+            private:
+                T* arr_l;
+                int c = 0;
+
+            public:
+                wrapper_line(T* arr_l, const int c_) : arr_l(arr_l), c(c_) {}
+
+                T& operator[](int i)
+                {           
+					if (i >= c || i < 0)
+					{
+                       throw  std::out_of_range("индекс [j] вне диапазона") ;
+					}
+						
+                    return arr_l[i];
+                }
+
+                
+            };
+
+			wrapper_line operator[](const int i) const
+            {    
+				if (i >= l || i < 0)
+				{
+                   throw  std::out_of_range("индекс [i] вне диапазона") ;
+				}
+					
+                return wrapper_line(arr[i], c);
+            };    
+
+    friend std::ostream& operator <<(std::ostream& out, const Table<T>& num)
+    {
+        out << T.num;
         return out;
     }
-
+    
     ~Table()
     {
         for (int i = 0; i < l; i++)

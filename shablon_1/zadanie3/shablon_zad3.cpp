@@ -2,37 +2,27 @@
 #include <iostream>
 #include <vector>
 #include <Windows.h>
+#include <algorithm>
 
-template<typename T>
+
 class Functor
 {
-public:
-
-    int get_sum(const Functor<T>& A)
-    {
-        int res = 0;
-        for (int i = 0; i < A.size(); i++)
+private:
+    int sum = 0, count = 0;
+    
+public: 
+    void operator() (int A)
+    {             
+        if (A % 3 == 0)
         {
-            if (A[i] % 3)
-            {
-                res += A[i];
-            }
-        }
-        return res;
+            sum += A;
+            count++;
+        }                     
     }
 
-    int get_count(const Functor<T>& A)
-    {
-        int res = 0;
-        for (int i = 0; i < A.size(); i++)
-        {
-            if (A[i] % 3)
-            {
-                res++;
-            }
-        }
-        return res;
-    }
+    int get_sum() const { return sum; }
+
+    int get_count() const { return count; }   
 };
 
 int main()
@@ -43,12 +33,11 @@ int main()
 
     std::vector<int> B {4, 1, 3, 6, 25, 54};
     
-    Functor functor; //не пойму почему переменная не принимает тип класса
-    functor = std::foreach(B.begin(), B.end(), functor); //какую директиву надо подключить, чтобы эта команда заработала?
+    Functor functor;
+    functor = std::for_each(B.begin(), B.end(), functor);
 
-    std::cout << std::endl;
     std::cout << "get_sum() = " << functor.get_sum() << std::endl;
-    std::cout << "get_count() = " << functor.get_count(B) << std::endl;
+    std::cout << "get_count() = " << functor.get_count() << std::endl;
 
     return 0;
 }
