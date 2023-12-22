@@ -26,6 +26,7 @@ public:
 		if (this != &obj)
 		{			
 			this->size_ = obj.size_;
+			this->count_ = obj.count_;
 
 			delete[] arr;
 
@@ -43,6 +44,7 @@ public:
 	smart_array(const smart_array& rhs)
 	{		
 		this->size_ = rhs.size_;
+		this->count_ = rhs.count_;
 		
 		arr = new int[rhs.size_];
 		
@@ -60,7 +62,7 @@ public:
 			throw std::out_of_range("ошибка добавления элемента");
 		}
 		else
-		{
+		{			
 			arr[count_] = new_element;
 			++count_;
 		}
@@ -68,7 +70,7 @@ public:
 
 	int get_element(const int index)
 	{					
-		if ((index >= size_) || (index < 0))
+		if ((index >= count_) || (index < 0))
 		{
 			throw std::out_of_range("введите корректный индекс");
 		}
@@ -100,7 +102,7 @@ int main()
 		arr.add_element(23);
 		arr.add_element(17);
 		
-		std::cout << "get_element = " << arr.get_element(3) << std::endl;
+		std::cout << "get_element = " << arr.get_element(7) << std::endl;
 	}
 	catch (const std::exception& ex) 
 	{
