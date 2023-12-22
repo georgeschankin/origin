@@ -55,7 +55,13 @@ int main()
 
     std::map<int, char> stroka;  
 
-    while (std::cin >> word)
+    std::cin >> word;
+    for (int i = 0; i < word.size(); i++)
+    {
+        stroka[i] = word[i];
+    }
+
+    /*while (std::cin >> word)
     {
         //stroka[k] = word;   
         for (int i = 0; i < word.size(); i++)
@@ -67,7 +73,7 @@ int main()
         {
             break;
         }
-    }
+    }*/
 
     mass_value = new int[stroka.size()];
 
