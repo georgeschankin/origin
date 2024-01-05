@@ -1,11 +1,7 @@
 ﻿
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
-#include <map>
-#include <algorithm>
-#include <vector>
 
 //template<class T>
 class ini_parser
