@@ -11,10 +11,7 @@
 class ini_parser
 {
 private:
-    std::string str, filename;  
-    std::vector<std::string> sections;
-    std::vector<std::string> values;
-    std::multimap<std::string, std::pair<std::string, std::string>> section_name_value;
+    std::string str, filename;      
     std::ifstream file;
 
 public:
