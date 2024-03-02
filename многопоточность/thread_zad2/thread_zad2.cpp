@@ -4,6 +4,7 @@
 #include <thread>
 #include <chrono>
 #include <ctime>
+#include <iomanip>
 
 std::vector<int> num_threads{ 1, 2, 4, 8, 16 }; // вектор кол-ва потоков
 std::vector<int> size_vector{ 1000, 10000, 100000, 1000000 }; // вектор количества элементов векторов
@@ -22,14 +23,16 @@ int main()
     std::vector<int> vec1, vec2;
       
     std::cout << "Количество аппаратных ядер = " << std::thread::hardware_concurrency() << std::endl;
-
+    std::cout << "\n";
+    std::cout << std::setw(20) << 1000 << "           " << 10000 << "       " << 100000 << "         " << 1000000 << std::endl;
+    
     for (auto& T : num_threads)
     {
         std::cout << std::endl << T << " поток(и)";
         for (auto& V : size_vector)
         {
             vec1.resize(V, 2);
-            vec2.resize(V, 5);
+            vec2.resize(V, 5);            
             std::vector<std::thread> threads;
             int sumV = 0;
             int part_size = V / T;
@@ -48,10 +51,10 @@ int main()
             {
                 it.join();
             }
-            auto end_time = clock();
-            std::cout << T << " потока(ов): и " << V << " элементов " << end_time - start_time << " тиков или " << ((float)(end_time - start_time)) / CLOCKS_PER_SEC << " секунд(ы)" << std::endl;
+            auto end_time = clock();            
+            std::cout << std::setw(10) << ((float)(end_time - start_time)) / CLOCKS_PER_SEC << " сек";
         }
-        std::cout << "\n";
+        std::cout << "\n\n";
     }
     
     return 0;
