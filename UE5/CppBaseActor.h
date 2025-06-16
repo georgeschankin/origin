@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CppBaseActor.generated.h"
 #include "GameFramework/Actor.h"
+#include "CppBaseActor.generated.h"
 
 class UStaticMeshComponent;
 
